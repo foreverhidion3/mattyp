@@ -1,0 +1,63 @@
+.title {
+    /* background-image: url('../images/stars_twinkle.gif'); */
+    /* background-image: url('../images/stars_field.gif'); */
+    /* background-image: url('../images/stars_moving_east.gif'); */
+    background-image: url('../images/stars_retreat.gif');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */   
+}
+#para {
+    color: blue;
+}
+.title_image_container {
+    height: 100px;
+    width: 675px;
+    margin-top: 10%;
+    /* background-color: blueviolet; */
+}
+@media only screen and (max-width: 600px) {
+    .title_image_container {
+        height: 75px;
+        width: 400px;
+        margin-top: 1%;
+    }
+}
+.title_image {
+    height: 100%;
+    width: 100%;
+    /* background-color: blue; */
+}
+.play_img_container {
+    /* background-color: red; */
+    margin-top: 10%;
+    height: 200px;
+    width: 200px;
+}
+@media only screen and (max-width: 600px) {
+    .play_img_container {
+        margin-top: 20%;
+        height: 100px;
+        width: 100px;
+      
+    }
+}
+#play_img {
+    /* background-color: blue; */
+    height: 100%;
+    width: 100%;
+}
+#play_img {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+  
+#play_img:hover {
+    transform: scale(1.1); /* Adjust the scale factor for the desired growth */
+}
