@@ -1,9 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Game.css';
 import villain_img from "../images/villain_img.png";
 import fireball_img from '../images/power_ball_5.gif';
 import hero_img from "../images/mm_image_flying_2.png";
-// import jewel_1 from "../images/jewel_1.gif";
+import power_ball_img from "../images/power_ball_2.gif";
+import jewel_1 from "../images/jewel_1.gif";
 import blackhole_img from "../images/blackhole_img.gif";
 // import lab_img from "../images/secret_lab.png"
 
@@ -42,7 +44,9 @@ function Game() {
     const [showfireball, setShowFireball] = useState(false); 
     //New state to track adding fireball status
     const [isAddingFireball, setIsAddingFireball] = useState(false);
-    // const [jewels, setJewels] = useState([]); 
+    const [jewels, setJewels] = useState([]);
+    const [jewelCounter, setJewelCounter] = useState(0); 
+    const [hitCount, setHitCount] = useState(0);
 
     const villainRef = useRef(null);
     const heroRef = useRef(null);
@@ -51,16 +55,40 @@ function Game() {
     const animationFrameRef = useRef(null);
     const animationFrameHeroRef = useRef(null);
     const animationFrameFireBallRef = useRef(null);
+    const jewelWidth = 40; 
+    const jewelHeight = 40; 
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        console.log("Container dimensions:", containerRef.current.clientWidth, containerRef.current.clientHeight);
-    }, []);
+    // useEffect(() => {
+    //     console.log("Container dimensions:", containerRef.current.clientWidth, containerRef.current.clientHeight);
+    // }, []);
 
     //Set villain
     useEffect(() => {
         const containerWidth = containerRef.current.clientWidth;
         // Set the initial x value based on container width
         setX(containerWidth - 200);
+    }, []);
+
+    // Function to drop a fireball by the villain
+    const dropFireball = () => {
+        if (!isAddingFireball && fireball.length < 100) {
+            const villainRect = villainRef.current.getBoundingClientRect();
+            // Calculate the position of the fireball near the villain
+            const fireballStartX = villainRect.left + villainRect.width / 4;
+            const fireballStartY = villainRect.top + villainRect.height / 2;
+    
+            // Add a fireball near the villain's position
+            addFireball(fireballStartX, fireballStartY);
+        }
+    };
+
+    // drop fireballs every 3 seconds
+    useEffect(() => {
+        const intervalId = setInterval(dropFireball, 3000);
+
+        // Cleanup interval on component unmount
+        return () => clearInterval(intervalId);
     }, []);
 
      //add fireball
@@ -88,7 +116,45 @@ function Game() {
           ]);
           setShowFireball(true);
         }
-    };      
+    };
+
+    const detectCollision = () => {
+        const heroRect = heroRef.current.getBoundingClientRect();
+        let newHitCount = hitCount; // Initialize a new hit count variable
+    
+        fireball.forEach((fireball) => {
+            const fireballRect = fireballRef.current.getBoundingClientRect();
+            if (
+                heroRect.right > fireballRect.left &&
+                heroRect.left < fireballRect.right &&
+                heroRect.bottom > fireballRect.top &&
+                heroRect.top < fireballRect.bottom
+            ) {
+                // Increment the new hit count
+                newHitCount++;
+            }
+        });
+    
+        // Update the hit count state
+        setHitCount(newHitCount);
+    
+        // Check if the hit count exceeds the losing threshold
+        if (newHitCount >= 100) {
+            // Game over logic here
+            gameOver();
+        }
+    }; 
+    
+    // Game Over function
+    const gameOver = () => {
+        // Stop animation loops
+        cancelAnimationFrame(animationFrameRef.current);
+        cancelAnimationFrame(animationFrameFireBallRef.current);
+
+        // Redirect to game over page
+        // You can use react-router-dom's navigate function or any routing mechanism you are using
+        navigate('/game_over');
+    };
     
     //animate villian
     useEffect(() => {
@@ -203,24 +269,30 @@ function Game() {
             // Move hero in the drifting direction
             setheroX((prevheroX) => {
                 const nextHeroX = prevheroX + heroxDirection * driftSpeed;
+                //added
+                const heroWidth = heroRef.current.width;
 
                 // Bounce off the walls
-                if (nextHeroX >= containerRef.current.clientWidth - heroRef.current.width || nextHeroX <= 0) {
+                if (nextHeroX >= containerRef.current.clientWidth - heroWidth || nextHeroX <= 0) {
                     setheroXDirection((prevDirection) => prevDirection * -1);
                 }
 
-                return Math.max(0, Math.min(containerRef.current.clientWidth - heroRef.current.width, nextHeroX));
+                console.log("Hero X:", nextHeroX, "Hero Y:", heroy, "Jewel Position:", jewels[0]);
+
+                return Math.max(0, Math.min(containerRef.current.clientWidth - heroWidth, nextHeroX));
             });
 
             setheroY((prevheroY) => {
                 const nextHeroY = prevheroY + heroyDirection * driftSpeed;
+                //added
+                const heroHeight = heroRef.current.height;
 
                 // Bounce off the walls
-                if (nextHeroY >= containerRef.current.clientHeight - heroRef.current.height || nextHeroY <= 0) {
+                if (nextHeroY >= containerRef.current.clientHeight - heroHeight || nextHeroY <= 0) {
                     setheroYDirection((prevDirection) => prevDirection * -1);
                 }
 
-                return Math.max(0, Math.min(containerRef.current.clientHeight - heroRef.current.height, nextHeroY));
+                return Math.max(0, Math.min(containerRef.current.clientHeight - heroHeight, nextHeroY));
             });
 
             // Check if hero reached the target position
@@ -232,6 +304,16 @@ function Game() {
                 setTargetHeroX(null);
                 setTargetHeroY(null);
             }
+
+            // Check for collision with jewels
+            jewels.forEach((jewel, index) => {
+                if (checkCollision(jewel)) {
+                    collectItem(index);
+                }
+            });
+
+            // Call detectCollision function here
+            detectCollision();
 
             animationFrameHeroRef.current = requestAnimationFrame(moveHeroTowardsTarget);
         };
@@ -266,66 +348,127 @@ function Game() {
     //debounce to use later
     const addFireballWithDebounce = useDebounce(addFireball, 500);  
     
+    // Jewel Ideas
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            addJewel();
+        }, 10000);
+    
+        // Cleanup interval on component unmount
+        return () => clearInterval(intervalId);
+    }, []);
+
+    const generateRandomPosition = () => {
+        const containerWidth = containerRef.current.clientWidth;
+        const containerHeight = containerRef.current.clientHeight;
+    
+        const randomX = Math.random() * (containerWidth - jewelWidth);
+        const randomY = Math.random() * (containerHeight - jewelHeight);
+    
+        return { x: randomX, y: randomY };
+    };
+    
+    // Function to add a new jewel to the state
+    const addJewel = () => {
+        const newJewel = generateRandomPosition();
+        setJewels((prevJewels) => [...prevJewels, newJewel]);
+    };
+    
+    // Function to check collision with a jewel
+    const checkCollision = (jewel) => {
+        const heroRect = heroRef.current.getBoundingClientRect();
+        const jewelRect = {
+            left: jewel.x,
+            top: jewel.y,
+            right: jewel.x + jewelWidth,
+            bottom: jewel.y + jewelHeight,
+        };
+    
+        return (
+            heroRect.right > jewelRect.left &&
+            heroRect.left < jewelRect.right &&
+            heroRect.bottom > jewelRect.top &&
+            heroRect.top < jewelRect.bottom
+        );
+    };
+    
+    // Function to handle jewel collection
+    const collectItem = (jewelIndex) => {
+        const WINNING_THRESHOLD = 100
+        setJewelCounter(prevCounter => prevCounter + 1);
+        setJewels((prevJewels) => prevJewels.filter((_, index) => index !== jewelIndex));
+        if (jewelCounter + 1 >= WINNING_THRESHOLD) {
+            navigate('/winner'); // Navigate to the winner page
+        }
+    };
+    
         
-  return (
-    <div className="body">
-    <div className="game_background">
-      <div className='game_container' ref={containerRef}>
-        {showfireball &&
-          fireball.map((fireball, index) => (
-            <img
-              key={index}
-              src={fireball_img}
-              alt='fireball'
-              className='fireball_img'
-              style={{ transform: `translate(${fireball.x}px, ${fireball.y}px)` }}
-              ref={fireballRef}
-            />
-          ))}
-        <img
-          ref={villainRef}
-          src={villain_img}
-          id='villain_img'
-          className={attack ? 'villain_attack' : ''}
-          style={{ transform: `translate(${x}px, ${y}px)` }}
-          onClick={() => {
-            if (fireball.length < 10 && !isAddingFireball) {
-              setAttack(true);
-              setAttackX(x);
-              setAttackY(y);
-              setIsAddingFireball(true);
-              addFireballWithDebounce(x, y);
-            }
-          }}
-        />
-        <img
-          ref={heroRef}
-          src={hero_img}
-          id='hero_img'
-          style={{ transform: `translate(${herox}px, ${heroy}px) translateX(-100%)` }}  
-        />
-        {/* {jewels.map((jewel, index) => (
-            <img
-                id="jewel"
+    return (
+        <div className="body">
+        <div className="game_background">
+        <div className='game_container' ref={containerRef}>
+        <div className="jewel_counter">Fragments Collected: <span>{jewelCounter}</span></div>
+        <div className="hit_counter">Hits Taken: <span>{hitCount}</span></div>
+            {showfireball &&
+            fireball.map((fireball, index) => (
+                <img
                 key={index}
-                src={jewel_1}
-                alt="jewel"
-                style={{ transform: `translate(${jewel.x}px, ${jewel.y}px)` }}
-                onClick={() => checkCollision(jewel) && collectItem(index)}
-            />
-        ))} */}
-        
-      </div>
-        <div className="game_background_2">
+                src={fireball_img}
+                alt='fireball'
+                className='fireball_img'
+                style={{ transform: `translate(${fireball.x}px, ${fireball.y}px)` }}
+                ref={fireballRef}
+                />
+            ))}
             <img
-                src={blackhole_img}
-                id='blackhole_img'
-                //   style={{ transform: `translate(${herox}px, ${heroy}px) translateX(-100%)` }}  
+            ref={villainRef}
+            src={villain_img}
+            id='villain_img'
+            className={attack ? 'villain_attack' : ''}
+            style={{ transform: `translate(${x}px, ${y}px)` }}
+            onClick={() => {
+                if (fireball.length < 10 && !isAddingFireball) {
+                setAttack(true);
+                setAttackX(x);
+                setAttackY(y);
+                setIsAddingFireball(true);
+                addFireballWithDebounce(x, y);
+                }
+            }}
             />
+            <img
+            ref={heroRef}
+            src={hero_img}
+            id='hero_img'
+            // style={{ transform: `translate(${herox}px, ${heroy}px) translateX(-90%)` }}
+            style={{ position: 'absolute', left: `${herox}px`, top: `${heroy}px` }}
+            // style={{ transform: `translate(${herox}px, ${heroy}px)` }}    
+            />
+            {/* <div className='game_container_jewels'> */}
+                {jewels.map((jewel, index) => (
+                    <img
+                        key={index}
+                        src={power_ball_img}
+                        // src={jewel_1}
+                        id="jewel"
+                        alt="jewel"
+                        style={{ transform: `translate(${jewel.x}px, ${jewel.y}px)` }}
+                        // style={{ transform: `translate(${jewel.x}px, ${jewel.y}px) translateX(-100%)` }}
+                    />
+                ))}
+            {/* </div> */}
+            
         </div>
-    </div>
-    </div>
-  );
+            <div className="game_background_2">
+                <img
+                    src={blackhole_img}
+                    id='blackhole_img'
+                    //   style={{ transform: `translate(${herox}px, ${heroy}px) translateX(-100%)` }}  
+                />
+            </div>
+        </div>
+        </div>
+    );
 }
 
 export default Game;

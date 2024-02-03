@@ -23,7 +23,7 @@ body::-webkit-scrollbar-thumb:hover {
     /* background-image: url('../images/secret_lab.png'); */
     background-size: cover;
     /* background-position: bottom; */
-    background-position: center;
+    /* background-position: center; */
     /* background-position: fixed; */
     background-repeat: no-repeat;
     height: 100vh;
@@ -41,18 +41,53 @@ body::-webkit-scrollbar-thumb:hover {
     overflow: hidden;
     margin: 0; /* Add this line */
     padding: 0; /* Add this line */
+    /* background-color: blueviolet; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;  */
+}
+.jewel_counter {
+    position: fixed;
+    top: 20px; /* Adjust the top position as needed */
+    right: 20px; /* Adjust the right position as needed */
+    background-color: black;
+    color: red;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    /* z-index: 999;  */
+}
+.jewel_counter span {
+    color: yellow; 
+}
+.hit_counter {
+    position: fixed;
+    top: 20px; /* Adjust the top position as needed */
+    left: 20px; /* Adjust the right position as needed */
+    background-color: black;
+    color: red;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 24px;
+    font-weight: bold;
+    /* z-index: 999;  */ 
+}
+.hit_counter span {
+    color: yellow; 
 }
 #villain_img {
     /* height: 8%;
     width: 8%; */
     height: 80px;
     width: 80px;
-    /* background-color: blueviolet; */
+    /* background-color: blue; */
 }
 #hero_img {
     height: 90px;
     width: 90px;
-    /* background-color: blueviolet;  */
+    /* background-color: blue; */
 }
 .villain_attack {
     filter: brightness(250%) saturate(200%) hue-rotate(180deg);
@@ -62,8 +97,15 @@ body::-webkit-scrollbar-thumb:hover {
     width: 70px;
     position: absolute;
 }
+/* .game_container_jewels {
+    width: 100vw;
+    height: 100vh;
+    background-color: blue; 
+    overflow: hidden; 
+    
+} */
 #jewel {
-    height: 30px;
+    height: 40px;
     width: 40px;
 }
 .game_background_2 {
