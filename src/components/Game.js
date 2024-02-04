@@ -405,10 +405,11 @@ function Game() {
         
     return (
         <div className="body">
+        <div className="game_body">
         <div className="game_background">
         <div className='game_container' ref={containerRef}>
         <div className="jewel_counter">Fragments Collected: <span>{jewelCounter}</span></div>
-        <div className="hit_counter">Hits Taken: <span>{hitCount}</span></div>
+        {/* <div className="hit_counter">Hits Taken: <span>{hitCount}</span></div> */}
             {showfireball &&
             fireball.map((fireball, index) => (
                 <img
@@ -466,6 +467,7 @@ function Game() {
                     //   style={{ transform: `translate(${herox}px, ${heroy}px) translateX(-100%)` }}  
                 />
             </div>
+        </div>
         </div>
         </div>
     );
