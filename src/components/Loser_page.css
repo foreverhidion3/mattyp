@@ -1,36 +1,3 @@
-.game_over_1 {
-    /* background-image: url('../images/stars_twinkle.gif'); */
-    /* background-image: url('../images/stars_field.gif'); */
-    /* background-image: url('../images/stars_moving_east.gif'); */
-    background-image: url('../images/game_over_1.gif');
-    background-size: cover;
-    background-position: bottom;
-    /* background-position: center; */
-    /* background-position: fixed; */
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Vertical centering */
-    justify-content: center; /* Horizontal centering */ 
-    /* position: relative; */
-}
-.game_over_2 {
-    /* background-image: url('../images/stars_twinkle.gif'); */
-    /* background-image: url('../images/stars_field.gif'); */
-    /* background-image: url('../images/stars_moving_east.gif'); */
-    background-image: url('../images/game_over_2.gif');
-    background-size: cover;
-    background-position: bottom;
-    /* background-position: center; */
-    /* background-position: fixed; */
-    background-repeat: no-repeat;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Vertical centering */
-    justify-content: center; /* Horizontal centering */ 
-    /* position: relative; */
+.game_over_background {
+    
 }

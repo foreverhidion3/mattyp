@@ -5,8 +5,7 @@ import game_img from "../images/mm_image_heroic_2.png"
 
 function Loser_page() {
   return (
-    <div className="game_over_1">
-      {/* <div className="game_over_2"> */}
+    <div className="game_over_background">
         <div>
           <h2>GAME OVER!!!!!</h2>
         </div>

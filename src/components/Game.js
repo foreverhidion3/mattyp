@@ -7,6 +7,7 @@ import hero_img from "../images/mm_image_flying_2.png";
 import power_ball_img from "../images/power_ball_2.gif";
 import jewel_1 from "../images/jewel_1.gif";
 import blackhole_img from "../images/blackhole_img.gif";
+import travel_game_over from "../images/enter_gif_travel.gif";
 // import lab_img from "../images/secret_lab.png"
 
 function Game() {
@@ -47,6 +48,7 @@ function Game() {
     const [jewels, setJewels] = useState([]);
     const [jewelCounter, setJewelCounter] = useState(0); 
     const [hitCount, setHitCount] = useState(0);
+    const [showGIF, setShowGIF] = useState(false);
 
     const villainRef = useRef(null);
     const heroRef = useRef(null);
@@ -85,7 +87,7 @@ function Game() {
 
     // drop fireballs every 3 seconds
     useEffect(() => {
-        const intervalId = setInterval(dropFireball, 3000);
+        const intervalId = setInterval(dropFireball, 1000);
 
         // Cleanup interval on component unmount
         return () => clearInterval(intervalId);
@@ -151,10 +153,18 @@ function Game() {
         cancelAnimationFrame(animationFrameRef.current);
         cancelAnimationFrame(animationFrameFireBallRef.current);
 
-        // Redirect to game over page
-        // You can use react-router-dom's navigate function or any routing mechanism you are using
+        setShowGIF(true);
+        setTimeout(() => {
+            // Use the navigate function to redirect
+            navigateTogame_over();
+        }, 3000); // Adjust the time as per your requirements
+    };
+
+    const navigateTogame_over = () => {
+        // Use navigate instead of assigning to useNavigate
         navigate('/game_over');
     };
+    
     
     //animate villian
     useEffect(() => {
@@ -277,7 +287,7 @@ function Game() {
                     setheroXDirection((prevDirection) => prevDirection * -1);
                 }
 
-                console.log("Hero X:", nextHeroX, "Hero Y:", heroy, "Jewel Position:", jewels[0]);
+                // console.log("Hero X:", nextHeroX, "Hero Y:", heroy, "Jewel Position:", jewels[0]);
 
                 return Math.max(0, Math.min(containerRef.current.clientWidth - heroWidth, nextHeroX));
             });
@@ -402,75 +412,81 @@ function Game() {
         }
     };
     
-        
     return (
         <div className="body">
-        <div className="game_body">
-        <div className="game_background">
-        <div className='game_container' ref={containerRef}>
-        <div className="jewel_counter">Fragments Collected: <span>{jewelCounter}</span></div>
-        {/* <div className="hit_counter">Hits Taken: <span>{hitCount}</span></div> */}
-            {showfireball &&
-            fireball.map((fireball, index) => (
-                <img
-                key={index}
-                src={fireball_img}
-                alt='fireball'
-                className='fireball_img'
-                style={{ transform: `translate(${fireball.x}px, ${fireball.y}px)` }}
-                ref={fireballRef}
-                />
-            ))}
-            <img
-            ref={villainRef}
-            src={villain_img}
-            id='villain_img'
-            className={attack ? 'villain_attack' : ''}
-            style={{ transform: `translate(${x}px, ${y}px)` }}
-            onClick={() => {
-                if (fireball.length < 10 && !isAddingFireball) {
-                setAttack(true);
-                setAttackX(x);
-                setAttackY(y);
-                setIsAddingFireball(true);
-                addFireballWithDebounce(x, y);
-                }
-            }}
-            />
-            <img
-            ref={heroRef}
-            src={hero_img}
-            id='hero_img'
-            // style={{ transform: `translate(${herox}px, ${heroy}px) translateX(-90%)` }}
-            style={{ position: 'absolute', left: `${herox}px`, top: `${heroy}px` }}
-            // style={{ transform: `translate(${herox}px, ${heroy}px)` }}    
-            />
-            {/* <div className='game_container_jewels'> */}
-                {jewels.map((jewel, index) => (
-                    <img
-                        key={index}
-                        src={power_ball_img}
-                        // src={jewel_1}
-                        id="jewel"
-                        alt="jewel"
-                        style={{ transform: `translate(${jewel.x}px, ${jewel.y}px)` }}
-                        // style={{ transform: `translate(${jewel.x}px, ${jewel.y}px) translateX(-100%)` }}
-                    />
-                ))}
-            {/* </div> */}
-            
-        </div>
-            <div className="game_background_2">
-                <img
-                    src={blackhole_img}
-                    id='blackhole_img'
-                    //   style={{ transform: `translate(${herox}px, ${heroy}px) translateX(-100%)` }}  
-                />
+             {/* Conditionally render the GIF */}
+            <div className="game_body">
+                {showGIF && (
+                            <img src= {travel_game_over} className=".game_over_2" alt="Game Over GIF" />
+                        )}
+                <div className="game_background">
+                    <div className='game_container' ref={containerRef}>
+                        <div className="jewel_counter">Fragments Collected: <span>{jewelCounter}</span></div>
+                        {/* <div className="hit_counter">Hits Taken: <span>{hitCount}</span></div> */}
+                        {/* Display fireballs */}
+                        {showfireball &&
+                        fireball.map((fireball, index) => (
+                            <img
+                                key={index}
+                                src={fireball_img}
+                                alt='fireball'
+                                className='fireball_img'
+                                style={{ transform: `translate(${fireball.x}px, ${fireball.y}px)` }}
+                                ref={fireballRef}
+                            />
+                        ))}
+                        {/* Display the villain */}
+                        <img
+                            ref={villainRef}
+                            src={villain_img}
+                            id='villain_img'
+                            className={attack ? 'villain_attack' : ''}
+                            style={{ transform: `translate(${x}px, ${y}px)` }}
+                            onClick={() => {
+                                if (fireball.length < 10 && !isAddingFireball) {
+                                    setAttack(true);
+                                    setAttackX(x);
+                                    setAttackY(y);
+                                    setIsAddingFireball(true);
+                                    addFireballWithDebounce(x, y);
+                                }
+                            }}
+                        />
+                        {/* Display the hero */}
+                        <img
+                            ref={heroRef}
+                            src={hero_img}
+                            id='hero_img'
+                            // style={{ transform: `translate(${herox}px, ${heroy}px) translateX(-90%)` }}
+                            style={{ position: 'absolute', left: `${herox}px`, top: `${heroy}px` }}
+                            // style={{ transform: `translate(${herox}px, ${heroy}px)` }}    
+                        />
+                        {/* Display jewels */}
+                        {jewels.map((jewel, index) => (
+                            <img
+                                key={index}
+                                src={power_ball_img}
+                                // src={jewel_1}
+                                id="jewel"
+                                alt="jewel"
+                                style={{ transform: `translate(${jewel.x}px, ${jewel.y}px)` }}
+                                // style={{ transform: `translate(${jewel.x}px, ${jewel.y}px) translateX(-100%)` }}
+                            />
+                        ))}
+                    </div>
+                    {/* Display the background with black hole */}
+                    <div className="game_background_2">
+                        <img
+                            src={blackhole_img}
+                            id='blackhole_img'
+                            //   style={{ transform: `translate(${herox}px, ${heroy}px) translateX(-100%)` }}  
+                        />
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
-        </div>
     );
+        
 }
 
 export default Game;
