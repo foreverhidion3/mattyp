@@ -33,11 +33,10 @@ body::-webkit-scrollbar-track {
     width: 502px;
     height: 802px;
 }
-@media only screen and (max-width: 400px) {
-    .title_image_container {
-        height: 75px;
-        width: 400px;
-        margin-top: 1%;
+@media only screen and (max-width: 600px) {
+    .game_background {
+        width: 375px;
+        height: 702px;
     }
 }
 .game_container {
@@ -52,10 +51,16 @@ body::-webkit-scrollbar-track {
     border-right: 2px solid red; 
     /* background-color: blueviolet; */
 }
+@media only screen and (max-width: 600px) {
+    .game_container {
+        width: 375px;
+        height: 700px;
+    }
+}
 .jewel_counter {
     position: fixed;
-    top: 20px; /* Adjust the top position as needed */
-    right: 20px; /* Adjust the right position as needed */
+    top: 20px; 
+    right: 20px; 
     background-color: black;
     color: red;
     padding: 10px;
@@ -63,6 +68,15 @@ body::-webkit-scrollbar-track {
     font-size: 24px;
     font-weight: bold;
     /* z-index: 999;  */
+}
+@media only screen and (max-width: 600px) {
+    .jewel_counter {
+        top: 30px; 
+        right: 65px; 
+        padding: 10px;
+        border-radius: 5px;
+        font-size: 12px;
+    }
 }
 .jewel_counter span {
     color: yellow; 
@@ -79,6 +93,13 @@ body::-webkit-scrollbar-track {
     font-weight: bold;
     /* z-index: 999;  */ 
 }
+@media only screen and (max-width: 600px) {
+    .hit_counter {
+        font-size: 12px;
+        padding: 5px;
+        border-radius: 2.5px;
+    }
+}
 .hit_counter span {
     color: yellow; 
 }
@@ -89,10 +110,22 @@ body::-webkit-scrollbar-track {
     width: 80px;
     /* background-color: blue; */
 }
+@media only screen and (max-width: 600px) {
+    #villain_img {
+        height: 60px;
+        width: 60px;
+    }
+}
 #hero_img {
     height: 90px;
     width: 90px;
     /* background-color: blue; */
+}
+@media only screen and (max-width: 600px) {
+    #hero_img {
+        height: 70px;
+        width: 70px;
+    }
 }
 .villain_attack {
     filter: brightness(250%) saturate(200%) hue-rotate(180deg);
@@ -101,6 +134,12 @@ body::-webkit-scrollbar-track {
     height: 50px;
     width: 70px;
     position: absolute;
+}
+@media only screen and (max-width: 600px) {
+    .fireball_img {
+        height: 40px;
+        width: 55px;
+    }
 }
 /* .game_container_jewels {
     width: 100vw;
@@ -112,6 +151,12 @@ body::-webkit-scrollbar-track {
 #jewel {
     height: 40px;
     width: 40px;
+}
+@media only screen and (max-width: 600px) {
+    #jewel {
+        height: 30px;
+        width: 30px;
+    }
 }
 .game_background_2 {
     /* background-image: url('../images/stars_twinkle.gif'); */
@@ -134,6 +179,17 @@ body::-webkit-scrollbar-track {
     border-right: 2px solid red;  
     /* position: relative; */
 }
+@media only screen and (max-width: 600px) {
+    .game_background_2 {
+        width: 375px;
+        height: 702px;
+    }
+}
 #blackhole_img {
     margin-top: -100px;
+}
+@media only screen and (max-width: 600px) {
+    #blackhole_img {
+        margin-top: -200px;
+    }
 }
