@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Game.css';
-import villain_img from "../images/villain_img.png";
+import villain_img from "../images/spaceship_img.png";
 import fireball_img from '../images/power_ball_5.gif';
 import hero_img from "../images/mm_image_flying_2.png";
 import power_ball_img from "../images/power_ball_2.gif";

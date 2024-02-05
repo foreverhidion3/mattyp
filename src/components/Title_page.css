@@ -52,7 +52,7 @@
 }
 @media only screen and (max-width: 600px) {
     .matt_poster_img_container {
-        margin: 20px;
+        margin: 5px;
         margin-top: 20%;
         height: 250px;
         width: 200px;
@@ -80,7 +80,7 @@
 }
 @media only screen and (max-width: 600px) {
     .luke_poster_img_container {
-        margin: 20px;
+        margin: 5px;
         margin-top: 20%;
         height: 250px;
         width: 200px;
