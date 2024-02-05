@@ -11,10 +11,19 @@
     display: flex;
     flex-direction: column;
     align-items: center; /* Vertical centering */
-    justify-content: center; /* Horizontal centering */   
+    justify-content: center; /* Horizontal centering */ 
+    overflow: auto; 
 }
-#para {
+/* #para {
     color: blue;
+} */
+.title_2 {
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: row;
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */ 
+    margin-top: 2%;  
 }
 .title_image_container {
     height: 100px;
@@ -34,30 +43,78 @@
     width: 100%;
     /* background-color: blue; */
 }
-.play_img_container {
-    /* background-color: red; */
-    margin-top: 10%;
-    height: 200px;
-    width: 200px;
+.matt_poster_img_container {
+    display: inline-block; /* Display posters inline */
+    margin: 30px; /* Adjust margin as needed */
+    height: 500px;
+    width: 375px;
+    background-color: blue; 
 }
 @media only screen and (max-width: 600px) {
-    .play_img_container {
+    .matt_poster_img_container {
+        margin: 20px;
         margin-top: 20%;
-        height: 100px;
-        width: 100px;
-      
+        height: 250px;
+        width: 200px;
     }
 }
-#play_img {
+#matt_poster_img {
     /* background-color: blue; */
     height: 100%;
     width: 100%;
 }
-#play_img {
+#matt_poster_img {
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
 }
   
-#play_img:hover {
+#matt_poster_img:hover {
     transform: scale(1.1); /* Adjust the scale factor for the desired growth */
+}
+.luke_poster_img_container {
+    display: inline-block; /* Display posters inline */
+    margin: 30px; /* Adjust margin as needed */
+    height: 500px;
+    width: 375px;
+    background-color: blue; /* Background color for testing purposes */
+}
+@media only screen and (max-width: 600px) {
+    .luke_poster_img_container {
+        margin: 20px;
+        margin-top: 20%;
+        height: 250px;
+        width: 200px;
+    }
+}
+#luke_poster_img {
+    /* background-color: blue; */
+    height: 100%;
+    width: 100%;
+}
+#luke_poster_img {
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+  
+#luke_poster_img:hover {
+    transform: scale(1.1); /* Adjust the scale factor for the desired growth */
+}
+.title_image_container_2 {
+    height: 50px;
+    width: 475px;
+    margin-top: 2%;
+    margin-left: 5%;
+    /* background-color: blueviolet; */
+}
+@media only screen and (max-width: 600px) {
+    .title_image_container_2 {
+        height: 30px;
+        width: 200px;
+        margin-top: 2%;
+    }
+}
+.title_image_2 {
+    height: 90%;
+    width: 90%;
+    /* background-color: blue; */
 }
