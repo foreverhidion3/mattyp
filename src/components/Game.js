@@ -87,7 +87,7 @@ function Game() {
 
     // drop fireballs every 3 seconds
     useEffect(() => {
-        const intervalId = setInterval(dropFireball, 1000);
+        const intervalId = setInterval(dropFireball, 10000);
 
         // Cleanup interval on component unmount
         return () => clearInterval(intervalId);
@@ -416,9 +416,9 @@ function Game() {
         <div className="body">
              {/* Conditionally render the GIF */}
             <div className="game_body">
-                {showGIF && (
+                {/* {showGIF && (
                             <img src= {travel_game_over} className=".game_over_2" alt="Game Over GIF" />
-                        )}
+                        )} */}
                 <div className="game_background">
                     <div className='game_container' ref={containerRef}>
                         <div className="jewel_counter">Fragments Collected: <span>{jewelCounter}</span></div>

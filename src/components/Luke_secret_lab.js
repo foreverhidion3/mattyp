@@ -17,6 +17,9 @@ function Luke_secret_lab() {
         <Link to="/game" className="game_img_container">
             <img src={space_ship_img} alt="game_img" id="game_img" />
         </Link>
+          {/* <div className="spaceship_container">
+            <img src={space_ship_img} alt="space_ship_img" className="space_ship_img" />
+          </div> */}
         <div className="lab_links">
           <div className="menu">
             <Link to="/game_full" className="title_img_7_container">

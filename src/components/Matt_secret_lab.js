@@ -31,7 +31,7 @@ function Matt_secret_lab() {
           <img src={game_img} alt="game_img" id="game_img" />
         </Link>
         <div className="space_station_links">
-          <div className="menu">
+          <div className="menu_2">
             <Link to="/game_full" className="title_img_4_container">
                 <img src={title_img_4} alt="title_img_4" id="title_img_4" /> 
             </Link>

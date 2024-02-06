@@ -54,8 +54,8 @@
     .matt_poster_img_container {
         margin: 5px;
         margin-top: 20%;
-        height: 250px;
-        width: 200px;
+        height: 225px;
+        width: 175px;
     }
 }
 #matt_poster_img {
@@ -82,8 +82,8 @@
     .luke_poster_img_container {
         margin: 5px;
         margin-top: 20%;
-        height: 250px;
-        width: 200px;
+        height: 225px;
+        width: 175px;
     }
 }
 #luke_poster_img {
@@ -118,3 +118,21 @@
     width: 90%;
     /* background-color: blue; */
 }
+.temporary_images {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* 100% of viewport width */
+    height: 100%; /* 100% of viewport height */
+    z-index: 10; /* Ensure the images are on top of other content */
+} 
+@media only screen and (max-width: 600px) {
+    .temporary_images {
+        width: 80%; 
+        height: 60%; 
+        z-index: 10; 
+        margin-left: 10%;
+        margin-top: 30%;
+        margin-bottom: 10%;
+    }
+} 
