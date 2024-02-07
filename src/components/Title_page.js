@@ -26,6 +26,11 @@ function Title() {
     }, 4000);
   };
 
+  const handlePlayButtonClick = () => {
+    // Navigate to the game page when the play button is clicked
+    navigate("/war"); // Adjust the path as needed
+  };
+
   return (
     <div className="title">
       <div className="title_image_container">
@@ -48,11 +53,17 @@ function Title() {
       {showTemporaryImage && (
         <img src={temporaryImage} alt="temporary_image" className="temporary_images" />
       )}
+
+      {/* Button to play the game */}
+      <button className="play_button" onClick={handlePlayButtonClick}>
+        Play Game
+      </button>
     </div>
   );
 }
 
 export default Title;
+
 
 // return (
 //   <div className="title">

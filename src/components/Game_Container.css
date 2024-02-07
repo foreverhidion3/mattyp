@@ -1,0 +1,18 @@
+.game_container_2 {
+    position: relative;
+    width: 500px;
+    height: 800px;
+    overflow: hidden;
+    margin: auto; /* Center the container horizontally */
+    /* border: 2px solid red; */
+    border-top: 2px solid red; 
+    border-left: 2px solid red; 
+    border-right: 2px solid red; 
+    background-color: blueviolet;
+}
+@media only screen and (max-width: 600px) {
+    .game_container_2 {
+        width: 375px;
+        height: 700px;
+    }
+}

@@ -27,7 +27,7 @@ function Game() {
         };
     };  
     //set states
-    const [x, setX] = useState(0);
+    const [x, setX] = useState(220);
     const [y, setY] = useState(100);
     const [herox, setheroX] = useState(0);
     const [heroy, setheroY] = useState(100);
@@ -65,12 +65,7 @@ function Game() {
     //     console.log("Container dimensions:", containerRef.current.clientWidth, containerRef.current.clientHeight);
     // }, []);
 
-    //Set villain
-    useEffect(() => {
-        const containerWidth = containerRef.current.clientWidth;
-        // Set the initial x value based on container width
-        setX(containerWidth - 200);
-    }, []);
+    
 
     // Function to drop a fireball by the villain
     const dropFireball = () => {
@@ -86,12 +81,12 @@ function Game() {
     };
 
     // drop fireballs every 3 seconds
-    useEffect(() => {
-        const intervalId = setInterval(dropFireball, 10000);
+    // useEffect(() => {
+    //     const intervalId = setInterval(dropFireball, 10000);
 
-        // Cleanup interval on component unmount
-        return () => clearInterval(intervalId);
-    }, []);
+    //     // Cleanup interval on component unmount
+    //     return () => clearInterval(intervalId);
+    // }, []);
 
      //add fireball
     const addFireball = (x, y) => {
