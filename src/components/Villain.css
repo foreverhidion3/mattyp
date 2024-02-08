@@ -1,0 +1,22 @@
+.villain-container {
+    position: relative; /* Ensure the container is positioned */
+    z-index: 10; /* Set the z-index to a value higher than other elements */
+}
+.fireball_img_2 {
+    height: 40px;
+    width: 40px;
+    position: absolute; /* Ensure the villain element is positioned absolutely */
+    top: 0; /* Adjust top, left, right, bottom as necessary */
+    left: 0;
+    z-index: 2; /* Set the z-index for the villain element */ 
+
+}
+#villain_img_2 {
+    height: 120px;
+    width: 120px;
+    position: absolute; /* Ensure the villain element is positioned absolutely */
+    top: 0; /* Adjust top, left, right, bottom as necessary */
+    left: 0;
+    z-index: 2; /* Set the z-index for the villain element */ 
+
+}
