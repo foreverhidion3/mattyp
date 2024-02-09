@@ -9,6 +9,8 @@ import mattyp_img_3 from "../images/mattyP_superhero_03.png"
 import title_img_4 from "../images/Title_4.png"
 import title_img_5 from "../images/Title_5.png"
 import title_img_6 from "../images/Title_6.png"
+import back_2 from "../images/back_2.png"
+
 
 function Matt_secret_lab() {
 
@@ -27,7 +29,7 @@ function Matt_secret_lab() {
   return (
     <div className="full_lab">
       <div className="space_station_background">
-        <Link to="/game" className="game_img_container">
+        <Link to="/war" className="game_img_container">
           <img src={game_img} alt="game_img" id="game_img" />
         </Link>
         <div className="space_station_links">
@@ -45,6 +47,9 @@ function Matt_secret_lab() {
           <div className="mattyp_img_1_container" onClick={handleClick}>
             <img src={currentImage} alt="mattyp_img_1" className="mattyp_img_1" />
           </div>
+          <Link to="/" className="back_container">
+                <img src={back_2} alt="title_img_9" id="title_img_9" />
+          </Link>
         </div>
       </div>
     </div>

@@ -67,19 +67,19 @@ function Game_Container() {
         <div className="body">
             <div className="game_body">
                 <div className="game_background">
-                    <div className='game_container'>
                     <div className='game_counters'>
                             <div>Fragments Collected: <span>{jewelsCollected}</span></div>
                             <div>Hits Taken: <span>{hitsCounted}</span></div>
                             {/* <div className="jewel_counter">Fragments Collected: <span>{jewelsCollected}</span></div>
                             <div className="hit_counter">Hits Taken: <span>{hitsCounted}</span></div> */}
                     </div>
+                    
                         <div className="game_container_2">    
                             <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
                             <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={hero_position} />
                             <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
                         </div>
-                    </div>
+        
                     <div className="game_background_2">
                         <img
                             src={blackhole_img}

@@ -39,9 +39,9 @@ function Title() {
       </div>
 
       {/* Button to play the game */}
-      <button className="play_button" onClick={handlePlayButtonClick}>
+      {/* <button className="play_button" onClick={handlePlayButtonClick}>
         Play Game
-      </button>
+      </button> */}
     </div>
   );
 }

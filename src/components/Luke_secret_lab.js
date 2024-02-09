@@ -6,6 +6,7 @@ import luke_img_1 from "../images/luckylukeborg_supervillain.png"
 import title_img_7 from "../images/Title_7.png"
 import title_img_8 from "../images/Title_8.png"
 import title_img_9 from "../images/Title_9.png"
+import back from "../images/back.png"
 
 function Luke_secret_lab() {
   return (
@@ -14,7 +15,7 @@ function Luke_secret_lab() {
         {/* <div>
           <h2>This is the Secret Lab!</h2>
         </div> */}
-        <Link to="/game" className="game_img_container">
+        <Link to="/war" className="game_img_container">
             <img src={space_ship_img} alt="game_img" id="game_img" />
         </Link>
           {/* <div className="spaceship_container">
@@ -35,6 +36,10 @@ function Luke_secret_lab() {
           <div className="luke_img_1_container">
             <img src={luke_img_1} alt="luke_img_1" className="luke_img_1" />
           </div>
+          <Link to="/" className="back_container">
+                <img src={back} alt="title_img_9" id="title_img_9" />
+          </Link>
+          
         </div>
       </div>
     </div>
