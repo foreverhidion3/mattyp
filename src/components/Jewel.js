@@ -29,7 +29,7 @@ const Jewel = ({ containerRef, onJewelCollected, heroPosition }) => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             addJewel();
-        }, 10000);
+        }, 7000);
 
         return () => clearInterval(intervalId);
     }, []);

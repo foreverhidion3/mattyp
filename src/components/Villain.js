@@ -64,7 +64,7 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
                 const containerHeight = containerRef.current.clientHeight;
                 const villainWidth = villainRef.current.width;
                 const villainHeight = villainRef.current.height;
-                const speed = 0.4;  
+                const speed = 0.3;  
     
                 setX((prevX) => {
                     const nextX = prevX + xDirection * speed;
@@ -151,7 +151,7 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
     }, [showfireball, fireballs]);
 
     const dropFireball = () => {
-        if (fireballCount < 10) {
+        if (fireballCount < 30) {
             
             const villainRect = villainRef.current.getBoundingClientRect();
             const containerRect = containerRef.current.getBoundingClientRect();
@@ -167,7 +167,7 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
 
     // drop fireballs every 3 seconds
     useEffect(() => {
-        const intervalId = setInterval(dropFireball, 10000);
+        const intervalId = setInterval(dropFireball, 15000);
 
         // Cleanup interval on component unmount
         return () => clearInterval(intervalId);

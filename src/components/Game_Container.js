@@ -4,6 +4,7 @@ import "./Game_Container.css"
 import Hero from "./Hero.js"
 import Jewel from "./Jewel.js"
 import Villain from "./Villain.js"
+import blackhole_img from "../images/blackhole_img.gif";
 
 function Game_Container() {
     const containerRef = useRef(null); // Define a containerRef
@@ -54,7 +55,7 @@ function Game_Container() {
         setJewelsCollected((prevCount) => prevCount + 1);
     };
     const handleHitsCounted = () => {
-        sethitsCounted((prevCount) => prevCount + 1000);
+        sethitsCounted((prevCount) => prevCount + 5);
     };
     useEffect(() => {
         if (hitsCounted >= 1000) {
@@ -63,13 +64,29 @@ function Game_Container() {
     }, [hitsCounted, navigate]);
 
     return (
-        <div className="Test">
-            <p style={{ color: 'red' }}>Jewels Collected: {jewelsCollected}</p> 
-            <p style={{ color: 'blue' }}>Hits: {hitsCounted}</p> {/* Display hit counter */}
-            <div className="game_container_2">    
-                <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
-                <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={hero_position} />
-                <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
+        <div className="body">
+            <div className="game_body">
+                <div className="game_background">
+                    <div className='game_container'>
+                    <div className='game_counters'>
+                            <div>Fragments Collected: <span>{jewelsCollected}</span></div>
+                            <div>Hits Taken: <span>{hitsCounted}</span></div>
+                            {/* <div className="jewel_counter">Fragments Collected: <span>{jewelsCollected}</span></div>
+                            <div className="hit_counter">Hits Taken: <span>{hitsCounted}</span></div> */}
+                    </div>
+                        <div className="game_container_2">    
+                            <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
+                            <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={hero_position} />
+                            <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
+                        </div>
+                    </div>
+                    <div className="game_background_2">
+                        <img
+                            src={blackhole_img}
+                            id='blackhole_img'
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     );
@@ -78,14 +95,10 @@ function Game_Container() {
 export default Game_Container;
 
 
+//works best
 
-
-
-
-
-
-//Works well
 // import React, { useEffect, useRef, useState } from 'react';
+// import { useNavigate } from 'react-router-dom';
 // import "./Game_Container.css"
 // import Hero from "./Hero.js"
 // import Jewel from "./Jewel.js"
@@ -94,8 +107,14 @@ export default Game_Container;
 // function Game_Container() {
 //     const containerRef = useRef(null); // Define a containerRef
 //     const [jewelsCollected, setJewelsCollected] = useState(0);
-//     const [position, setPosition] = useState({ x: 0, y: 0 }); // Define position state
-//     const [jewelPositions, setJewelPositions] = useState([]); // Define jewelPositions state
+//     const [hitsCounted, sethitsCounted] = useState(0);
+//     const [hero_position, setHeroPosition] = useState({ x: 0, y: 0 }); // Define hero_position state
+//     const [villain_position, setVillainPosition] = useState({ x: 300, y: 20 }); // Define villain_position state
+//     const [jewel_position, setJewelPosition] = useState([]); // Define jewel_position state
+//     const [fireballPositions, setFireballPositions] = useState([]);
+//     const [collisionTimestamp, setCollisionTimestamp] = useState(0);
+//     const [hitCounter, setHitCounter] = useState(0); // Initialize hit counter
+//     const navigate = useNavigate();
 
 //     useEffect(() => {
 //         // Get a reference to the game container element
@@ -133,71 +152,29 @@ export default Game_Container;
 //     const handleJewelCollected = () => {
 //         setJewelsCollected((prevCount) => prevCount + 1);
 //     };
+//     const handleHitsCounted = () => {
+//         sethitsCounted((prevCount) => prevCount + 5);
+//     };
+//     useEffect(() => {
+//         if (hitsCounted >= 1000) {
+//             navigate('/game_over'); // Navigate to the game over route
+//         }
+//     }, [hitsCounted, navigate]);
 
 //     return (
 //         <div className="Test">
 //             <p style={{ color: 'red' }}>Jewels Collected: {jewelsCollected}</p> 
+//             <p style={{ color: 'blue' }}>Hits: {hitsCounted}</p> {/* Display hit counter */}
 //             <div className="game_container_2">    
-//                 <Hero setPosition={setPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} />
-//                 <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={position} />
-//                 <Villain />  
+//                 <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
+//                 <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={hero_position} />
+//                 <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
 //             </div>
 //         </div>
 //     );
 // }
- 
+
 // export default Game_Container;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

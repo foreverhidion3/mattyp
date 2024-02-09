@@ -1,0 +1,13 @@
+.matt_load {
+    background-image: url('../images/matt_loading.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */ 
+    overflow: auto; 
+}
