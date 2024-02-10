@@ -17,13 +17,16 @@ function Luke_load() {
   }, [navigate]); // useEffect dependency to include navigate function
 
   return (
-    <div className="luke_load">
-      {/* <img src={luke_loading} alt="luke_load" id="luke_load_poster_img" /> */}
+    <div className="luke_load_container">
+      <div className="luke_load">
+        <img src={luke_loading} alt="luke_load" id="luke_load_poster_img" />
+      </div>
     </div>  
   );
 }
 
 export default Luke_load;
+
 
 
 

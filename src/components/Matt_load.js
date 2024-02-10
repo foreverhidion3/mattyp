@@ -17,8 +17,10 @@ function Matt_load() {
   }, [navigate]); // useEffect dependency to include navigate function
 
   return (
-    <div className="matt_load">
-      {/* <img src={matt_loading} alt="matt_load" id="matt_load_poster_img" /> */}
+    <div className="matt_load_container">
+      <div className="matt_load">
+        <img src={matt_loading} alt="matt_load" id="matt_load_poster_img" />
+      </div>
     </div>
   );
 }
