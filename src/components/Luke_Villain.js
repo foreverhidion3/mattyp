@@ -151,7 +151,7 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
     }, [showfireball, fireballs]);
 
     const dropFireball = () => {
-        if (fireballCount < 30) {
+        if (fireballCount < 20) {
             
             const villainRect = villainRef.current.getBoundingClientRect();
             const containerRect = containerRef.current.getBoundingClientRect();
