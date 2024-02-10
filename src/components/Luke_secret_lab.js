@@ -15,7 +15,7 @@ function Luke_secret_lab() {
         {/* <div>
           <h2>This is the Secret Lab!</h2>
         </div> */}
-        <Link to="/war" className="game_img_container">
+        <Link to="/luke_war" className="game_img_container">
             <img src={space_ship_img} alt="game_img" id="game_img" />
         </Link>
           {/* <div className="spaceship_container">

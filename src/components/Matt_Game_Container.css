@@ -89,7 +89,7 @@ body::-webkit-scrollbar-track {
     justify-content: space-between;
     margin-right: 5%;
     margin-left: 5%;
-    color: red;
+    color: green;
     font-size: 24px;
     font-weight: bold;
 }
@@ -99,7 +99,20 @@ body::-webkit-scrollbar-track {
     }
 }
 .game_counters span {
-    color: yellow; 
+    color:purple;
+}
+.hits_counter {
+    font-size: 24px;
+    font-weight: bold;
+}
+.hits_green {
+    color: green;
+}
+.hits_yellow {
+    color: yellow;
+}
+.hits_red {
+    color: red;
 }
 #villain_img {
     /* height: 8%;

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Villain.css';
+import './Matt_Villain.css';
 import villain_img from "../images/spaceship_img.png";
 import fireball_img from '../images/power_ball_5.gif';
 
@@ -215,15 +215,15 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
                             id='villain_img_2'
                             className={attack ? 'villain_attack' : ''}
                             style={{ transform: `translate(${x}px, ${y}px)` }}
-                            onClick={() => {
-                                if (fireballs.length < 10 && !isAddingFireball) {
-                                    setAttack(true);
-                                    setAttackX(x);
-                                    setAttackY(y);
-                                    setIsAddingFireball(true);
-                                    addFireball(x, y);
-                                }
-                            }}
+                            // onClick={() => {
+                            //     if (fireballs.length < 10 && !isAddingFireball) {
+                            //         setAttack(true);
+                            //         setAttackX(x);
+                            //         setAttackY(y);
+                            //         setIsAddingFireball(true);
+                            //         addFireball(x, y);
+                            //     }
+                            // }}
                         />
         </div>
         

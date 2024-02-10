@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./Game_Container.css"
-import Hero from "./Hero.js"
-import Jewel from "./Jewel.js"
-import Villain from "./Villain.js"
+import "./Luke_Game_Container.css"
+import Hero from "./Luke_Hero.js"
+import Jewel from "./Luke_Jewel.js"
+import Villain from "./Luke_Villain.js"
 import blackhole_img from "../images/blackhole_img.gif";
 
 function Game_Container() {
@@ -55,7 +55,7 @@ function Game_Container() {
         setJewelsCollected((prevCount) => prevCount + 1);
     };
     const handleHitsCounted = () => {
-        sethitsCounted((prevCount) => prevCount + 5);
+        sethitsCounted((prevCount) => prevCount + .5);
     };
     useEffect(() => {
         if (hitsCounted >= 1000) {
@@ -63,13 +63,24 @@ function Game_Container() {
         }
     }, [hitsCounted, navigate]);
 
+    const getHitsCounterColor = (hitsCount) => {
+        if (hitsCount >= 800) {
+            return 'hits_red';
+        } else if (hitsCount >= 400) {
+            return 'hits_yellow';
+        } else {
+            return 'hits_green';
+        }
+    };
+
     return (
         <div className="body">
             <div className="game_body">
                 <div className="game_background">
                     <div className='game_counters'>
                             <div>Fragments Collected: <span>{jewelsCollected}</span></div>
-                            <div>Hits Taken: <span>{hitsCounted}</span></div>
+                            <div className={getHitsCounterColor(hitsCounted)}>Hits Taken: <span>{hitsCounted}</span></div>
+                            {/* <div>Hits Taken: <span>{hitsCounted}</span></div> */}
                             {/* <div className="jewel_counter">Fragments Collected: <span>{jewelsCollected}</span></div>
                             <div className="hit_counter">Hits Taken: <span>{hitsCounted}</span></div> */}
                     </div>

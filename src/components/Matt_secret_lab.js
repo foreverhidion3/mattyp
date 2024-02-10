@@ -29,7 +29,7 @@ function Matt_secret_lab() {
   return (
     <div className="full_lab">
       <div className="space_station_background">
-        <Link to="/war" className="game_img_container">
+        <Link to="/mattyp_war" className="game_img_container">
           <img src={game_img} alt="game_img" id="game_img" />
         </Link>
         <div className="space_station_links">
