@@ -8,6 +8,9 @@ import title_img_8 from "../images/Title_8.png"
 import title_img_9 from "../images/Title_9.png"
 import back from "../images/back.png"
 import fire_ball_img from "../images/fireball_3.gif"
+import fire_ball_img_2 from "../images/fire.webp"
+import buggy_img_gif from "../images/babyborg_01_No_background.png"
+// import buggy_img_gif from "../images/babyborg_01.png"
 import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
 import audioFile from '../audio/Luke_Theme.mp3'; // Import your audio file
 
@@ -18,6 +21,10 @@ function Luke_secret_lab() {
         <Link to="/luke_war" className="game_img_container">
             <img src={space_ship_img} alt="game_img" id="game_img" />
         </Link>
+        {/* <div className="buggy_img_gif_container">
+            <img src={buggy_img_gif} alt="buggy_img_gif" className="buggy_img_gif" />
+            <img src={fire_ball_img_2} alt="fire_ball_img_2" className="fire_ball_img_2" style={{ transform: 'scaleX(-1)' }} />  
+        </div> */}
         <div className="lab_links">
           <div className="menu">
             <Link to="/game_full" className="title_img_7_container">
@@ -29,6 +36,10 @@ function Luke_secret_lab() {
             <Link to="/photos" className="title_img_9_container">
                 <img src={title_img_9} alt="title_img_9" id="title_img_9" />
             </Link>
+          </div>
+          <div className="buggy_img_gif_container">
+              <img src={buggy_img_gif} alt="buggy_img_gif" className="buggy_img_gif" />
+              <img src={fire_ball_img_2} alt="fire_ball_img_2" className="fire_ball_img_2" style={{ transform: 'scaleX(-1)' }} />  
           </div>
           <div className="luke_img_1_container">
             <img src={luke_img_1} alt="luke_img_1" className="luke_img_1" />
