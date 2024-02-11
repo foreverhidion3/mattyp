@@ -7,20 +7,17 @@ import title_img_7 from "../images/Title_7.png"
 import title_img_8 from "../images/Title_8.png"
 import title_img_9 from "../images/Title_9.png"
 import back from "../images/back.png"
+import fire_ball_img from "../images/fireball_3.gif"
+import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
+import audioFile from '../audio/Aaron Hibell - destroyer of worlds  OPPENHEIMER.mp3'; // Import your audio file
 
 function Luke_secret_lab() {
   return (
     <div className="full_lab">
       <div className="lab_background">
-        {/* <div>
-          <h2>This is the Secret Lab!</h2>
-        </div> */}
         <Link to="/luke_war" className="game_img_container">
             <img src={space_ship_img} alt="game_img" id="game_img" />
         </Link>
-          {/* <div className="spaceship_container">
-            <img src={space_ship_img} alt="space_ship_img" className="space_ship_img" />
-          </div> */}
         <div className="lab_links">
           <div className="menu">
             <Link to="/game_full" className="title_img_7_container">
@@ -35,11 +32,14 @@ function Luke_secret_lab() {
           </div>
           <div className="luke_img_1_container">
             <img src={luke_img_1} alt="luke_img_1" className="luke_img_1" />
+            <img src={fire_ball_img} alt="fire_ball_img" className="fire_ball_img" />
           </div>
           <Link to="/" className="back_container">
                 <img src={back} alt="title_img_9" id="title_img_9" />
           </Link>
-          
+        </div>
+        <div className="audio_player_container">
+          <AudioPlayer audioFile={audioFile} />
         </div>
       </div>
     </div>

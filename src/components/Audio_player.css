@@ -1,0 +1,35 @@
+
+audio {
+    height: 25px;
+    width: 20px;
+    max-width: 400px;
+    /* background-color: blue; */
+    margin-right: -90%;
+}
+audio::-webkit-media-controls-enclosure {
+    background-color: red;
+}
+
+/* Main Controls:
+
+::-webkit-media-controls: Targets the entire media controls container.
+::-webkit-media-controls-play-button: Targets the play button.
+::-webkit-media-controls-pause-button: Targets the pause button.
+::-webkit-media-controls-seek-back-button: Targets the seek back button.
+::-webkit-media-controls-seek-forward-button: Targets the seek forward button.
+Volume Controls:
+
+::-webkit-media-controls-volume-slider: Targets the volume slider.
+::-webkit-media-controls-mute-button: Targets the mute button.
+::-webkit-media-controls-volume-slider-container: Targets the volume slider container.
+Time Controls:
+
+::-webkit-media-controls-current-time-display: Targets the current time display.
+::-webkit-media-controls-time-remaining-display: Targets the time remaining display.
+::-webkit-media-controls-time-display-container: Targets the time display container.
+::-webkit-media-controls-timeline: Targets the timeline (progress bar).
+Additional Controls:
+
+::-webkit-media-controls-enclosure: Targets the entire control panel.
+::-webkit-media-controls-toggle-closed-captions-button: Targets the closed captions button.
+::-webkit-media-controls-toggle-closed-captions-button-container: Targets the closed captions button container. */
