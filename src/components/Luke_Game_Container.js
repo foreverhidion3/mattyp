@@ -5,6 +5,8 @@ import Hero from "./Luke_Hero.js"
 import Jewel from "./Luke_Jewel.js"
 import Villain from "./Luke_Villain.js"
 import blackhole_img from "../images/blackhole_img.gif";
+import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
+import audioFile from '../audio/Destroyer of worlds - Aaron Hibell José Vicente Plaza Edit Extended mix.mp3'; // Import your audio file
 
 function Game_Container() {
     const containerRef = useRef(null); // Define a containerRef
@@ -96,6 +98,9 @@ function Game_Container() {
                             src={blackhole_img}
                             id='blackhole_img'
                         />
+                    </div>
+                    <div className="audio_player_container">
+                        <AudioPlayer audioFile={audioFile} />
                     </div>
                 </div>
             </div>

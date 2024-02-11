@@ -53,7 +53,7 @@ body::-webkit-scrollbar-track {
     background-size: cover;
     background-repeat: no-repeat;
     width: 500px;
-    height: 800px;
+    height: 850px;
 }
 @media only screen and (max-width: 600px) {
     .game_background {

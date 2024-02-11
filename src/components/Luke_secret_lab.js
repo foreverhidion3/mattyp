@@ -9,7 +9,7 @@ import title_img_9 from "../images/Title_9.png"
 import back from "../images/back.png"
 import fire_ball_img from "../images/fireball_3.gif"
 import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
-import audioFile from '../audio/Aaron Hibell - destroyer of worlds  OPPENHEIMER.mp3'; // Import your audio file
+import audioFile from '../audio/Luke_Theme.mp3'; // Import your audio file
 
 function Luke_secret_lab() {
   return (

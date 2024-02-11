@@ -10,6 +10,8 @@ import title_img_4 from "../images/Title_4.png"
 import title_img_5 from "../images/Title_5.png"
 import title_img_6 from "../images/Title_6.png"
 import back_2 from "../images/back_2.png"
+import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
+import audioFile from '../audio/MattyP_Theme.mp3'; // Import your audio file
 
 
 function Matt_secret_lab() {
@@ -50,6 +52,9 @@ function Matt_secret_lab() {
           <Link to="/" className="back_container">
                 <img src={back_2} alt="title_img_9" id="title_img_9" />
           </Link>
+        </div>
+        <div className="audio_player_container">
+          <AudioPlayer audioFile={audioFile} />
         </div>
       </div>
     </div>

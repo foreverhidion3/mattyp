@@ -5,6 +5,9 @@ import Hero from "./Matt_Hero.js"
 import Jewel from "./Matt_Jewel.js"
 import Villain from "./Matt_Villain.js"
 import blackhole_img from "../images/blackhole_img.gif";
+import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
+import audioFile from '../audio/Matt_Game_Music_1.mp3'
+
 
 function Game_Container() {
     const containerRef = useRef(null); // Define a containerRef
@@ -96,6 +99,9 @@ function Game_Container() {
                             src={blackhole_img}
                             id='blackhole_img'
                         />
+                    </div>
+                    <div className="audio_player_container">
+                        <AudioPlayer audioFile={audioFile} />
                     </div>
                 </div>
             </div>

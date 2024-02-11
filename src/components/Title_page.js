@@ -5,6 +5,8 @@ import title_img from "../images/Title.png";
 import matt_poster_img from "../images/mattyP_superhero_POSTER.jpg";
 import luke_poster_img from "../images/luckylukeborg_supervillain_POSTER.jpg";
 import title_img_3 from "../images/Title_3.png";
+import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
+import audioFile from '../audio/Title_Music.mp3'; // Import your audio file
 
 function Title() {
   const navigate = useNavigate();
@@ -42,6 +44,9 @@ function Title() {
       {/* <button className="play_button" onClick={handlePlayButtonClick}>
         Play Game
       </button> */}
+        <div className="audio_player_container">
+          <AudioPlayer audioFile={audioFile} />
+        </div>
     </div>
   );
 }
