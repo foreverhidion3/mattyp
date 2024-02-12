@@ -1,0 +1,24 @@
+.luke_game_over_background {
+    /* background-image: url('../images/stars_twinkle.gif'); */
+     /* background-image: url('../images/stars_field.gif'); */
+     /* background-image: url('../images/stars_moving_east.gif'); */
+     background-image: url("../images/the_black_hole.gif");
+     /* background-image: url("../images/luke_travel_4.webp"); */
+     background-size: cover;
+     background-position: top;
+     background-repeat: no-repeat;
+     height: 100vh;
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center; /* Vertical centering */
+     justify-content: center; /* Horizontal centering */ 
+     overflow: auto; 
+ 
+ }
+h2 {
+    color: red;
+}
+p {
+    color: red; 
+}

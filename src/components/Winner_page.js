@@ -1,7 +1,7 @@
 import React from 'react';
 import './Winner_page.css';
 import { Link } from 'react-router-dom';
-import game_img from "../images/mm_image_heroic_2.png"
+// import game_img from "../images/mm_image_heroic_2.png"
 
 function Winner_page() {
   return (

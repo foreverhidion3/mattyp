@@ -1,9 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import "./Luke_Game_Container.css"
 import Hero from "./Luke_Hero.js"
 import Jewel from "./Luke_Jewel.js"
 import Villain from "./Luke_Villain.js"
+import Luke_travel from "./Luke_travel";
+import Luke_loser_page from "./Luke_loser_page";
 import blackhole_img from "../images/blackhole_img.gif";
 import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
 import audioFile from '../audio/Destroyer of worlds - Aaron Hibell José Vicente Plaza Edit Extended mix.mp3'; // Import your audio file
@@ -19,6 +22,7 @@ function Game_Container() {
     const [collisionTimestamp, setCollisionTimestamp] = useState(0);
     const [hitCounter, setHitCounter] = useState(0); // Initialize hit counter
     const navigate = useNavigate();
+    const [gameOver, setGameOver] = useState(false); // Define gameOver state
 
     useEffect(() => {
         // Get a reference to the game container element
@@ -59,11 +63,38 @@ function Game_Container() {
     const handleHitsCounted = () => {
         sethitsCounted((prevCount) => prevCount + .5);
     };
+
+    // useEffect(() => {
+    //     if (hitsCounted >= 10) {
+    //         console.log("Game_Container Log", hitsCounted)
+    //         setGameOver(true); // Set gameOver to true
+    //         navigate('/luke_travel', { state: { hitsCounted } });
+    //     }
+    // }, [hitsCounted, navigate]);
+
     useEffect(() => {
-        if (hitsCounted >= 1000) {
-            navigate('/game_over'); // Navigate to the game over route
+        if (jewelsCollected < 100 && hitsCounted >= 10) {
+            console.log("Game_Container Log", hitsCounted)
+            console.log("jewelsCollected", jewelsCollected)
+            setGameOver(true); // Set gameOver to true
+            navigate('/luke_travel', { state: { hitsCounted, jewelsCollected } });
         }
-    }, [hitsCounted, navigate]);
+    }, [hitsCounted, jewelsCollected, navigate]);
+
+    // useEffect(() => {
+    //     if (jewelsCollected < 100 && hitsCounted >= 10) {
+    //         console.log("jewelsCollected", jewelsCollected)
+    //         setGameOver(true); // Set gameOver to true
+    //         navigate('/luke_travel', { state: { jewelsCollected } });
+    //     }
+    // }, [jewelsCollected, navigate]);
+
+    
+    // useEffect(() => {
+    //     if (hitsCounted >= 1) {
+    //         navigate('/luke_travel'); 
+    //     }
+    // }, [hitsCounted, navigate]);
 
     const getHitsCounterColor = (hitsCount) => {
         if (hitsCount >= 800) {
@@ -87,12 +118,17 @@ function Game_Container() {
                             <div className="hit_counter">Hits Taken: <span>{hitsCounted}</span></div> */}
                     </div>
                     
-                        <div className="game_container_2">    
+                        <div className="game_container_2">
+                        {/* <BrowserRouter>     */}
                             <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
                             <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={hero_position} />
                             <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
-                        </div>
-        
+                            {/* <Routes>
+                                <Route path="/luke_travel" element={<Luke_travel />} />
+                                <Route path="/luke_game_over" element={<Luke_loser_page />} />            
+                            </Routes> */}
+                        {/* </BrowserRouter> */}
+                        </div>     
                     <div className="game_background_2">
                         <img
                             src={blackhole_img}
