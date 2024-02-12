@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import './Luke_secret_lab.css';
 import { Link } from 'react-router-dom';
 import space_ship_img from "../images/spaceship_img.png"
@@ -9,12 +10,26 @@ import title_img_9 from "../images/Title_9.png"
 import back from "../images/back.png"
 import fire_ball_img from "../images/fireball_3.gif"
 import fire_ball_img_2 from "../images/fire.webp"
-import buggy_img_gif from "../images/babyborg_01_No_background.png"
+import buggy_img_gif from "../images/babyborg_01.png"
+import buggy_img_gif_2 from "../images/babyborg_02.png"
 // import buggy_img_gif from "../images/babyborg_01.png"
 import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
 import audioFile from '../audio/Luke_Theme.mp3'; // Import your audio file
 
 function Luke_secret_lab() {
+
+  const [Image, setImage] = useState(buggy_img_gif);
+
+  const handleClick = () => {
+    console.log("click")
+    // Switching logic
+    if (Image === buggy_img_gif) {
+      setImage(buggy_img_gif_2);
+    } else if (Image === buggy_img_gif_2) {
+      setImage(buggy_img_gif);
+    };
+    console.log("click_2")
+  };
   return (
     <div className="full_lab">
       <div className="lab_background">
@@ -24,6 +39,9 @@ function Luke_secret_lab() {
         {/* <div className="buggy_img_gif_container">
             <img src={buggy_img_gif} alt="buggy_img_gif" className="buggy_img_gif" />
             <img src={fire_ball_img_2} alt="fire_ball_img_2" className="fire_ball_img_2" style={{ transform: 'scaleX(-1)' }} />  
+        </div> */}
+        {/* <div className="buggy_img_gif_container">
+              <img src={buggy_img_gif} alt="buggy_img_gif" className="buggy_img_gif" />
         </div> */}
         <div className="lab_links">
           <div className="menu">
@@ -37,10 +55,13 @@ function Luke_secret_lab() {
                 <img src={title_img_9} alt="title_img_9" id="title_img_9" />
             </Link>
           </div>
-          <div className="buggy_img_gif_container">
+          <div className="buggy_img_gif_container" onClick={handleClick}>
+              <img src={Image} alt="buggy_img_gif" className="buggy_img_gif" />
+          </div>
+          {/* <div className="buggy_img_gif_container">
               <img src={buggy_img_gif} alt="buggy_img_gif" className="buggy_img_gif" />
               <img src={fire_ball_img_2} alt="fire_ball_img_2" className="fire_ball_img_2" style={{ transform: 'scaleX(-1)' }} />  
-          </div>
+          </div> */}
           <div className="luke_img_1_container">
             <img src={luke_img_1} alt="luke_img_1" className="luke_img_1" />
             <img src={fire_ball_img} alt="fire_ball_img" className="fire_ball_img" />
