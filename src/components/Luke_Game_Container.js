@@ -73,7 +73,7 @@ function Game_Container() {
     // }, [hitsCounted, navigate]);
 
     useEffect(() => {
-        if (jewelsCollected < 100 && hitsCounted >= 10) {
+        if (jewelsCollected < 100 && hitsCounted >= 1000) {
             console.log("Game_Container Log", hitsCounted)
             console.log("jewelsCollected", jewelsCollected)
             setGameOver(true); // Set gameOver to true

@@ -17,7 +17,7 @@ function Luke_travel() {
       navigate('/luke_game_over', { state: { hitsCounted, jewelsCollected } });
       console.log("Luke_travel Log", hitsCounted)
       console.log("Luke_travel Log", jewelsCollected)
-    }, 3000); // 3000 milliseconds = 3 seconds
+    }, 4000); // 3000 milliseconds = 3 seconds
 
     // Cleanup function to clear the timer if the component unmounts before the timeout
     return () => clearTimeout(timer);

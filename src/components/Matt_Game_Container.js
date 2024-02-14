@@ -6,7 +6,7 @@ import Jewel from "./Matt_Jewel.js"
 import Villain from "./Matt_Villain.js"
 import blackhole_img from "../images/blackhole_img.gif";
 import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
-import audioFile from '../audio/Matt_Game_Music_1.mp3'
+import audioFile from '../audio/Matt_Game_Music_4.mp3'
 
 
 function Game_Container() {
@@ -20,6 +20,7 @@ function Game_Container() {
     const [collisionTimestamp, setCollisionTimestamp] = useState(0);
     const [hitCounter, setHitCounter] = useState(0); // Initialize hit counter
     const navigate = useNavigate();
+    const [gameOver, setGameOver] = useState(false); // Define gameOver state
 
     useEffect(() => {
         // Get a reference to the game container element
@@ -61,10 +62,18 @@ function Game_Container() {
         sethitsCounted((prevCount) => prevCount + 5);
     };
     useEffect(() => {
-        if (hitsCounted >= 1000) {
-            navigate('/game_over'); // Navigate to the game over route
+        if (jewelsCollected < 100 && hitsCounted >= 1000) {
+            console.log("Game_Container Log", hitsCounted)
+            console.log("jewelsCollected", jewelsCollected)
+            setGameOver(true); // Set gameOver to true
+            navigate('/matt_travel', { state: { hitsCounted, jewelsCollected } });
         }
-    }, [hitsCounted, navigate]);
+    }, [hitsCounted, jewelsCollected, navigate]);
+    // useEffect(() => {
+    //     if (hitsCounted >= 1000) {
+    //         navigate('/game_over'); 
+    //     }
+    // }, [hitsCounted, navigate]);
 
     const getHitsCounterColor = (hitsCount) => {
         if (hitsCount >= 800) {

@@ -1,0 +1,17 @@
+.matt_travel_container {
+    
+     background-image: url("../images/luke_travel_7.gif");
+     /* background-image: url("../images/matt_lose_2.webp"); */
+    
+     background-size: cover;
+     background-position: center;
+     background-repeat: no-repeat;
+     height: 100vh;
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center; /* Vertical centering */
+     justify-content: center; /* Horizontal centering */ 
+     overflow: auto; 
+ 
+ }
