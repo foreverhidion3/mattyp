@@ -1,0 +1,6 @@
+.story_game_over_background {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */ 
+}

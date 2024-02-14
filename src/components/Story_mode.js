@@ -5,9 +5,9 @@ import './Story_mode.css';
 
 function Story_mode() {
   return (
-    <div className="game_over_background">
+    <div className="story_game_over_background">
         <div>
-          <h2>Story!!!!!</h2>
+          <h2>Coming Soon . . .</h2>
         </div>
       </div>
     // </div>

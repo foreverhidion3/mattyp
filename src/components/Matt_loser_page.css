@@ -15,12 +15,12 @@
      justify-content: center; /* Horizontal centering */ 
      overflow: auto;  
 }
-@media only screen and (max-width: 550px) {
+/* @media only screen and (max-width: 550px) {
     .matt_game_over_background {
         width: 550px;
         height: 100vh;
     }
-}
+} */
 .matt_center_piece {
     /* background-color: blue; */
     height: 30%;

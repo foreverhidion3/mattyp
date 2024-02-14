@@ -52,12 +52,15 @@ function Matt_secret_lab() {
   return (
     <div className="full_lab">
       <div className="space_station_background">
-        <Link to="/mattyp_war" className="game_img_container">
+        {/* <Link to="/mattyp_war" className="game_img_container">
           <img src={game_img} alt="game_img" id="game_img" />
-        </Link>
+        </Link> */}
         <div className="space_station_links">
           <div className="menu_2">
-            <Link to="/game_full" className="title_img_4_container">
+            {/* <Link to="/game_full" className="title_img_4_container">
+                <img src={title_img_4} alt="title_img_4" id="title_img_4" /> 
+            </Link> */}
+            <Link to="/mattyp_war" className="title_img_4_container">
                 <img src={title_img_4} alt="title_img_4" id="title_img_4" /> 
             </Link>
             <Link to="/story_mode" className="title_img_5_container">

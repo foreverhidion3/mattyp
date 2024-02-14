@@ -5,9 +5,10 @@ import './Game_full.css';
 
 function Game_full() {
   return (
-    <div className="game_over_background">
+    <div className="game_full_over_background">
         <div>
-          <h2>GAME PAGE!!!!!</h2>
+          <h2>Instructions:</h2>
+          <p>MattyP and Lucky LukeBorg are </p>
         </div>
       </div>
     // </div>

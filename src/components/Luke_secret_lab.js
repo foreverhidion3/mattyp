@@ -32,19 +32,15 @@ function Luke_secret_lab() {
   return (
     <div className="full_lab">
       <div className="lab_background">
-        <Link to="/luke_war" className="game_img_container">
+        {/* <Link to="/luke_war" className="game_img_container">
             <img src={space_ship_img} alt="game_img" id="game_img" />
-        </Link>
-        {/* <div className="buggy_img_gif_container">
-            <img src={buggy_img_gif} alt="buggy_img_gif" className="buggy_img_gif" />
-            <img src={fire_ball_img_2} alt="fire_ball_img_2" className="fire_ball_img_2" style={{ transform: 'scaleX(-1)' }} />  
-        </div> */}
-        {/* <div className="buggy_img_gif_container">
-              <img src={buggy_img_gif} alt="buggy_img_gif" className="buggy_img_gif" />
-        </div> */}
+        </Link> */}
         <div className="lab_links">
           <div className="menu">
-            <Link to="/game_full" className="title_img_7_container">
+            {/* <Link to="/game_full" className="title_img_7_container">
+                <img src={title_img_7} alt="title_img_7" id="title_img_7" /> 
+            </Link> */}
+            <Link to="/luke_war" className="title_img_7_container">
                 <img src={title_img_7} alt="title_img_7" id="title_img_7" /> 
             </Link>
             <Link to="/story_mode" className="title_img_8_container">
