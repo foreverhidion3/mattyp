@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import './Matt_loser_page.css';
 import title_img_11 from "../images/Title_11.png";
 import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
-import audioFile from '../audio/Matt_Lose_Music.mp3'; // Import your audio file
+import audioFile from '../audio/mattyp_death.mp3'; // Import your audio file
 
 function Matt_loser_page() {
   const location = useLocation();
