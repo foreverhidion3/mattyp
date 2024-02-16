@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './Luke_Villain.css';
 import villain_img from "../images/mm_image_flying_2.png";
 import fireball_img from '../images/power_ball_12.gif';
+// import collision_img from '../images/explosion_2.webp';
 
 function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCounted}) {
     // const useDebounce = (callback, delay) => {
@@ -51,10 +52,15 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
     const animationFrameFireBallRef = useRef(null);
     // const navigate = useNavigate();
     const [fireballCount, setFireballCount] = useState(0);
+    // const [collisionCoordinates, setCollisionCoordinates] = useState(null);
     
     useEffect(() => {
         setvillainPosition({ x: 400, y: 20 })
     }, []);
+
+    // const updateCollisionCoordinates = (x, y) => {
+    //     setCollisionCoordinates({ x, y });
+    // };
     
     //animate villian
     useEffect(() => {
@@ -182,6 +188,7 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
                 heroPosition.y + 60 > fireballs.y;
 
             if (isCollision) {
+                // updateCollisionCoordinates(fireballs.x, fireballs.y);
                 onHitsCounted();
                 console.log("Collision detected with fireball at coordinates:", fireballs);
             }
@@ -225,6 +232,14 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
                             //     }
                             // }}
                         />
+                        {/* {collisionCoordinates && (
+                            <img
+                                src={collision_img}
+                                alt='collision'
+                                className='collision_img'
+                                style={{ transform: `translate(${collisionCoordinates.x}px, ${collisionCoordinates.y}px)` }}
+                            />
+                        )} */}
         </div>
         
         

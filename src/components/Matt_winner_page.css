@@ -1,0 +1,76 @@
+.matt_win_background {
+    /* background-image: url("../images/raining_1.webp"); */
+    background-image: url("../images/matt_lose_3.webp");
+   
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Vertical centering */
+    justify-content: center; /* Horizontal centering */ 
+    overflow: auto;  
+}
+/* @media only screen and (max-width: 550px) {
+   .luke_game_over_background {
+       width: 550px;
+       height: 100vh;
+   }
+} */
+.cyber_1_img_container {
+   height: 50%;
+   width: 70%;
+}
+#cyber_1 {
+   height: 100%;
+   width: 100%;
+}
+.matt_win_center_piece {
+   /* background-color: blue; */
+   height: 30%;
+   width: 65%;
+   display: flex;
+   flex-direction: column;
+   align-items: center; /* Vertical centering */
+   justify-content: center; /* Horizontal centering */ 
+   overflow: auto; 
+   z-index: 10;
+}
+h2 {
+   color: red;
+}
+p {
+   color: red;
+   font-weight: 800; 
+}
+/* p2 {
+   color: yellow;
+   font-weight: 600; 
+} */
+#title_img_11 {
+   /* background-color: green; */
+   /* border: 5px solid black; */
+   /* margin-top: 10%; */
+   height: 20%;
+   width: 99%;
+   /* height: 0%;
+   width: 99%; */
+   transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+}
+#title_img_11:hover {
+   transform: scale(1.3); /* Adjust the scale factor for the desired growth */
+   filter: brightness(150%);
+}
+.matt_end_container {
+   /* background-color: blueviolet; */
+   width: 100%;
+   height: 80%;
+   position: fixed;
+   bottom: 0;
+   z-index: 6 ;
+}   
+.audio_player_container {
+   z-index: 5 ;
+}

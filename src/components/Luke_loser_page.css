@@ -46,6 +46,8 @@ p2 {
 #title_img_10 {
     /* border: 5px solid black; */
     margin-top: 40%;
+    height: 20%;
+    width: 99%;
     /* height: 0%;
     width: 99%; */
     transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;

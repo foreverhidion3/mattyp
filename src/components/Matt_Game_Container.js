@@ -74,6 +74,13 @@ function Game_Container() {
     //         navigate('/game_over'); 
     //     }
     // }, [hitsCounted, navigate]);
+    useEffect(() => {
+        if (jewelsCollected >= 100) {
+            console.log("You Win")
+            setGameOver(true); // Set gameOver to true
+            navigate('/matt_win_travel');
+        }
+    }, [navigate]);
 
     const getHitsCounterColor = (hitsCount) => {
         if (hitsCount >= 800) {
