@@ -4,6 +4,7 @@ import "./Matt_Game_Container.css"
 import Hero from "./Matt_Hero.js"
 import Jewel from "./Matt_Jewel.js"
 import Villain from "./Matt_Villain.js"
+import Health_drop from "./Matt_Health_drop.js"
 import blackhole_img from "../images/blackhole_img.gif";
 import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
 import audioFile from '../audio/Matt_Game_Music_4.mp3'
@@ -14,6 +15,7 @@ function Game_Container() {
     const [jewelsCollected, setJewelsCollected] = useState(0);
     const [hitsCounted, sethitsCounted] = useState(0);
     const [hero_position, setHeroPosition] = useState({ x: 0, y: 0 }); // Define hero_position state
+    const [ship, setShip] = useState([]);
     const [villain_position, setVillainPosition] = useState({ x: 300, y: 20 }); // Define villain_position state
     const [jewel_position, setJewelPosition] = useState([]); // Define jewel_position state
     const [fireballPositions, setFireballPositions] = useState([]);
@@ -60,6 +62,9 @@ function Game_Container() {
     };
     const handleHitsCounted = () => {
         sethitsCounted((prevCount) => prevCount + 5);
+    };
+    const handleHealth = () => {
+        sethitsCounted((prevCount) => prevCount - 100);
     };
     useEffect(() => {
         if (jewelsCollected < 100 && hitsCounted >= 1000) {
@@ -108,6 +113,7 @@ function Game_Container() {
                             <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
                             <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={hero_position} />
                             <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
+                            <Health_drop containerRef={containerRef} ship={ship} setShip={setShip} hero_position={hero_position} handleJewelCollected={handleJewelCollected} handleHealth={handleHealth}/>
                         </div>
         
                     <div className="game_background_2">

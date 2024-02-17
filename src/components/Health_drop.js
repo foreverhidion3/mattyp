@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './Health_drop.css'; 
 import dropShipImage from "../images/amos 'n' Ruger.png";
-import healthImage from "../images/heart_1.gif";
+import healthImage from "../images/battery_4.gif";
 
 const Health_drop = ({ containerRef, ship, setShip, hero_position, handleJewelCollected, handleHealth }) => {
-    const [shipWidth, setShipWidth] = useState(45);
-    const [shipHeight, setShipHeight] = useState(20);
+    const [shipWidth, setShipWidth] = useState(40);
+    const [shipHeight, setShipHeight] = useState(28);
     const [showShip, setShowShip] = useState(false);
     const [dropshipCount, setDropshipCount] = useState(0);
     //for dropping health
     const [health, setHealth] = useState([]);
-    const [healthWidth, setHealthWidth] = useState(30);
-    const [healthHeight, setHealthHeight] = useState(30);
+    const [healthWidth, setHealthWidth] = useState(40);
+    const [healthHeight, setHealthHeight] = useState(40);
     const [injured, setInjured] = useState(false);
     const [injuredX, setInjuredX] = useState(0);
     const [injuredY, setInjuredY] = useState(0);
@@ -23,7 +23,7 @@ const Health_drop = ({ containerRef, ship, setShip, hero_position, handleJewelCo
     const shipRef = useRef(null);
 
     // Maximum number of ships allowed
-    const MAX_SHIPS = 4;
+    const MAX_SHIPS = 13;
 
     // Function to add a new ship
     const addShip = () => {
@@ -63,7 +63,7 @@ const Health_drop = ({ containerRef, ship, setShip, hero_position, handleJewelCo
 
     // Set up interval to add ships every 5 seconds
     useEffect(() => {
-        const intervalId = setInterval(dropShip, 60000); //60000
+        const intervalId = setInterval(dropShip, 30000); //60000
 
         // Cleanup interval on component unmount
         return () => clearInterval(intervalId);
@@ -185,8 +185,8 @@ const Health_drop = ({ containerRef, ship, setShip, hero_position, handleJewelCo
                             position: 'absolute',
                             left: `${ship.x}px`,
                             top: `${ship.y}px`,
-                            width: '30px',
-                            height: '15px',
+                            width: shipWidth,
+                            height: shipHeight,
                             zIndex: 2,
                             cursor: 'pointer', // Add pointer cursor for better UX
                         }}

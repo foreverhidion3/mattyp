@@ -65,7 +65,7 @@ function Game_Container() {
         sethitsCounted((prevCount) => prevCount + .5);
     };
     const handleHealth = () => {
-        sethitsCounted((prevCount) => prevCount - 200);
+        sethitsCounted((prevCount) => prevCount - 100);
     };
 
     useEffect(() => {

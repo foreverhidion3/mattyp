@@ -1,0 +1,16 @@
+.ship {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+  
+.ship:hover {
+    transform: scale(1.3); /* Adjust the scale factor for the desired growth */
+}
+.ship:active {
+    filter: brightness(170%); /* Increase brightness when ship is clicked */
+}
+.health_img {
+    height: 30px;
+    width: 30px;
+    z-index: 1;    
+}
