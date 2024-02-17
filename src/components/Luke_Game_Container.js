@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import "./Luke_Game_Container.css"
 import Hero from "./Luke_Hero.js"
 import Jewel from "./Luke_Jewel.js"
 import Villain from "./Luke_Villain.js"
+import Health_drop from "./Health_drop.js"
 import Luke_travel from "./Luke_travel";
 import Luke_loser_page from "./Luke_loser_page";
 import blackhole_img from "../images/blackhole_img.gif";
@@ -16,6 +16,7 @@ function Game_Container() {
     const [jewelsCollected, setJewelsCollected] = useState(0);
     const [hitsCounted, sethitsCounted] = useState(0);
     const [hero_position, setHeroPosition] = useState({ x: 0, y: 0 }); // Define hero_position state
+    const [ship, setShip] = useState([{ x: 0, y: 0 }], [{ x: 0, y: 0 }]);
     const [villain_position, setVillainPosition] = useState({ x: 300, y: 20 }); // Define villain_position state
     const [jewel_position, setJewelPosition] = useState([]); // Define jewel_position state
     const [fireballPositions, setFireballPositions] = useState([]);
@@ -64,14 +65,6 @@ function Game_Container() {
         sethitsCounted((prevCount) => prevCount + .5);
     };
 
-    // useEffect(() => {
-    //     if (hitsCounted >= 10) {
-    //         console.log("Game_Container Log", hitsCounted)
-    //         setGameOver(true); // Set gameOver to true
-    //         navigate('/luke_travel', { state: { hitsCounted } });
-    //     }
-    // }, [hitsCounted, navigate]);
-
     useEffect(() => {
         if (jewelsCollected < 100 && hitsCounted >= 1000) {
             console.log("Game_Container Log", hitsCounted)
@@ -88,21 +81,6 @@ function Game_Container() {
             navigate('/luke_win_travel');
         }
     }, [navigate]);
-
-    // useEffect(() => {
-    //     if (jewelsCollected < 100 && hitsCounted >= 10) {
-    //         console.log("jewelsCollected", jewelsCollected)
-    //         setGameOver(true); // Set gameOver to true
-    //         navigate('/luke_travel', { state: { jewelsCollected } });
-    //     }
-    // }, [jewelsCollected, navigate]);
-
-    
-    // useEffect(() => {
-    //     if (hitsCounted >= 1) {
-    //         navigate('/luke_travel'); 
-    //     }
-    // }, [hitsCounted, navigate]);
 
     const getHitsCounterColor = (hitsCount) => {
         if (hitsCount >= 800) {
@@ -121,22 +99,13 @@ function Game_Container() {
                     <div className='game_counters'>
                             <div>Fragments Collected: <span>{jewelsCollected}</span></div>
                             <div className={getHitsCounterColor(hitsCounted)}>Hits Taken: <span>{hitsCounted}</span></div>
-                            {/* <div>Hits Taken: <span>{hitsCounted}</span></div> */}
-                            {/* <div className="jewel_counter">Fragments Collected: <span>{jewelsCollected}</span></div>
-                            <div className="hit_counter">Hits Taken: <span>{hitsCounted}</span></div> */}
                     </div>
-                    
-                        <div className="game_container_2">
-                        {/* <BrowserRouter>     */}
-                            <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
-                            <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={hero_position} />
-                            <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
-                            {/* <Routes>
-                                <Route path="/luke_travel" element={<Luke_travel />} />
-                                <Route path="/luke_game_over" element={<Luke_loser_page />} />            
-                            </Routes> */}
-                        {/* </BrowserRouter> */}
-                        </div>     
+                    <div className="game_container_2">
+                        <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
+                        <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={hero_position} />
+                        <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
+                        <Health_drop containerRef={containerRef} shipPositions={ship} setShipPositions={setShip} />
+                    </div>
                     <div className="game_background_2">
                         <img
                             src={blackhole_img}
@@ -153,6 +122,7 @@ function Game_Container() {
 }
 
 export default Game_Container;
+
 
 
 //works best
