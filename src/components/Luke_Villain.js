@@ -129,20 +129,20 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
           const fireballHeight = fireballRef.current.height;
           const fireballSpeed = .3;
         setFireballs((prevFireball) =>
-            prevFireball.map((fireballs) => ({
-              ...fireballs,
-              x: fireballs.x + fireballs.xDirection * fireballSpeed,
-              y: fireballs.y + fireballs.yDirection * fireballSpeed,
+            prevFireball.map((anything) => ({
+              ...anything,
+              x: anything.x + anything.xDirection * fireballSpeed,
+              y: anything.y + anything.yDirection * fireballSpeed,
               xDirection:
-                fireballs.x + fireballs.xDirection * fireballSpeed >= containerWidth - fireballWidth ||
-                fireballs.x + fireballs.xDirection * fireballSpeed <= 0
-                  ? fireballs.xDirection * -1
-                  : fireballs.xDirection,
+              anything.x + anything.xDirection * fireballSpeed >= containerWidth - fireballWidth ||
+              anything.x + anything.xDirection * fireballSpeed <= 0
+                  ? anything.xDirection * -1
+                  : anything.xDirection,
               yDirection:
-                fireballs.y + fireballs.yDirection * fireballSpeed >= containerHeight - fireballHeight ||
-                fireballs.y + fireballs.yDirection * fireballSpeed <= 0
-                  ? fireballs.yDirection * -1
-                  : fireballs.yDirection,
+              anything.y + anything.yDirection * fireballSpeed >= containerHeight - fireballHeight ||
+              anything.y + anything.yDirection * fireballSpeed <= 0
+                  ? anything.yDirection * -1
+                  : anything.yDirection,
             }))
         );
             animationFrameFireBallRef.current = requestAnimationFrame(animateFireball);
@@ -190,7 +190,7 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
             if (isCollision) {
                 // updateCollisionCoordinates(fireballs.x, fireballs.y);
                 onHitsCounted();
-                console.log("Collision detected with fireball at coordinates:", fireballs);
+                // console.log("Collision detected with fireball at coordinates:", fireballs);
             }
         });
     };
