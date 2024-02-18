@@ -6,7 +6,7 @@ const Jewel = ({ containerRef, onJewelCollected, heroPosition }) => {
     const [jewelWidth, setJewelWidth] = useState(20);
     const [jewelHeight, setJewelHeight] = useState(20);
 
-    const MAX_JEWELS = 100; // Maximum number of jewels allowed
+    const MAX_JEWELS = 1000; // Maximum number of jewels allowed
 
     const generateRandomPosition = () => {
         const containerWidth = containerRef.current.clientWidth;

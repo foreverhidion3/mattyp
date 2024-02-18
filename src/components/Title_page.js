@@ -1,4 +1,4 @@
-import React from 'react';
+import{ React, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Title_page.css';
 import title_img from "../images/Title.png";
@@ -45,7 +45,7 @@ function Title() {
         Play Game
       </button> */}
         <div className="audio_player_container">
-          <AudioPlayer audioFile={audioFile} />
+          <AudioPlayer audioFile={audioFile} autoPlay loop />
         </div>
     </div>
   );

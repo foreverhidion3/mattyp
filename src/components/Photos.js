@@ -1,7 +1,5 @@
 import React from 'react';
 import './Photos.css';
-// import { Link } from 'react-router-dom';
-// import game_img from "../images/mm_image_heroic_2.png"
 
 function Photos() {
   return (

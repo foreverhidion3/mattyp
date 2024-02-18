@@ -6,15 +6,7 @@ import fireball_img from '../images/power_ball_12.gif';
 // import collision_img from '../images/explosion_2.webp';
 
 function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCounted}) {
-    // const useDebounce = (callback, delay) => {
-    //     const timeoutRef = useRef(null);
-    //     return (...args) => {
-    //       clearTimeout(timeoutRef.current);
-    //       timeoutRef.current = setTimeout(() => {
-    //         callback(...args);
-    //       }, delay);
-    //     };
-    // };
+   
 
     const navigate = useNavigate()
 
@@ -58,9 +50,6 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
         setvillainPosition({ x: 400, y: 20 })
     }, []);
 
-    // const updateCollisionCoordinates = (x, y) => {
-    //     setCollisionCoordinates({ x, y });
-    // };
     
     //animate villian
     useEffect(() => {

@@ -1,10 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import "./Luke_Game_Container.css"
+import Health_bar from "./Health_bar.js"
 import Hero from "./Luke_Hero.js"
 import Jewel from "./Luke_Jewel.js"
 import Villain from "./Luke_Villain.js"
-import Health_drop from "./Health_drop.js"
+import Health_drop from "./Luke_Health_drop.js"
 import Luke_travel from "./Luke_travel";
 import Luke_loser_page from "./Luke_loser_page";
 import blackhole_img from "../images/blackhole_img.gif";
@@ -24,6 +25,8 @@ function Game_Container() {
     const [hitCounter, setHitCounter] = useState(0); // Initialize hit counter
     const navigate = useNavigate();
     const [gameOver, setGameOver] = useState(false); // Define gameOver state
+
+    const maxHealth = 1000; // Define the maximum health
 
     useEffect(() => {
         // Get a reference to the game container element
@@ -61,11 +64,13 @@ function Game_Container() {
     const handleJewelCollected = () => {
         setJewelsCollected((prevCount) => prevCount + 1);
     };
+    
     const handleHitsCounted = () => {
-        sethitsCounted((prevCount) => prevCount + .5);
+        sethitsCounted((prevCount) => Math.max(0, prevCount + 0.5)); // Ensure hitsCounted never goes below 0
     };
+
     const handleHealth = () => {
-        sethitsCounted((prevCount) => prevCount - 100);
+        sethitsCounted((prevCount) => Math.max(0, prevCount - 100)); // Ensure health points never go below 0
     };
 
     useEffect(() => {
@@ -85,15 +90,15 @@ function Game_Container() {
         }
     }, [navigate]);
 
-    const getHitsCounterColor = (hitsCount) => {
-        if (hitsCount >= 800) {
-            return 'hits_red';
-        } else if (hitsCount >= 400) {
-            return 'hits_yellow';
-        } else {
-            return 'hits_green';
-        }
-    };
+    // const getHitsCounterColor = (hitsCount) => {
+    //     if (hitsCount >= 800) {
+    //         return 'hits_red';
+    //     } else if (hitsCount >= 400) {
+    //         return 'hits_yellow';
+    //     } else {
+    //         return 'hits_green';
+    //     }
+    // };
 
     return (
         <div className="body">
@@ -101,7 +106,8 @@ function Game_Container() {
                 <div className="game_background">
                     <div className='game_counters'>
                             <div>Fragments Collected: <span>{jewelsCollected}</span></div>
-                            <div className={getHitsCounterColor(hitsCounted)}>Hits Taken: <span>{hitsCounted}</span></div>
+                            {/* <div className={getHitsCounterColor(hitsCounted)}>Hits Taken: <span>{hitsCounted}</span></div> */}
+                            <Health_bar handleHitsCounted={handleHitsCounted} hitsCounted={hitsCounted} maxHealth={maxHealth} />
                     </div>
                     <div className="game_container_2">
                         <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />

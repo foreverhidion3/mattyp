@@ -12,6 +12,8 @@ import back from "../images/back.png"
 import fire_ball_img from "../images/fireball_3.gif"
 import buggy_img_gif from "../images/babyborg_01.png"
 import buggy_img_gif_2 from "../images/babyborg_02.png"
+import puppups from "../images/amos 'n' Ruger.png"
+import hover from "../images/lazer_1.gif"
 // import buggy_img_gif from "../images/babyborg_01.png"
 import AudioPlayer from './Audio_player'; // Import the AudioPlayer component
 import audioFile from '../audio/Luke_Theme.mp3'; // Import your audio file
@@ -33,14 +35,8 @@ function Luke_secret_lab() {
   return (
     <div className="full_lab">
       <div className="lab_background">
-        {/* <Link to="/luke_war" className="game_img_container">
-            <img src={space_ship_img} alt="game_img" id="game_img" />
-        </Link> */}
         <div className="lab_links">
           <div className="menu">
-            {/* <Link to="/game_full" className="title_img_7_container">
-                <img src={title_img_7} alt="title_img_7" id="title_img_7" /> 
-            </Link> */}
             <Link to="/luke_war" className="title_img_7_container">
                 <img src={title_img_7} alt="title_img_7" id="title_img_7" /> 
             </Link>
@@ -54,13 +50,13 @@ function Luke_secret_lab() {
           <div className="buggy_img_gif_container" onClick={handleClick}>
               <img src={Image} alt="buggy_img_gif" className="buggy_img_gif" />
           </div>
-          {/* <div className="buggy_img_gif_container">
-              <img src={buggy_img_gif} alt="buggy_img_gif" className="buggy_img_gif" />
-              <img src={fire_ball_img_2} alt="fire_ball_img_2" className="fire_ball_img_2" style={{ transform: 'scaleX(-1)' }} />  
-          </div> */}
           <div className="luke_img_1_container">
             <img src={luke_img_1} alt="luke_img_1" className="luke_img_1" />
             <img src={fire_ball_img} alt="fire_ball_img" className="fire_ball_img" />
+          </div>
+          <div className="puppups_img_container" >
+              <img src={puppups} alt="puppups_img" className="puppups_img" />
+              <img src={hover} alt="hover_img" className="hover_img" />
           </div>
           <Link to="/" className="back_container">
                 <img src={back} alt="title_img_9" id="title_img_9" />

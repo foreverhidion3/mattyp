@@ -1,0 +1,18 @@
+.health_container {
+    border: 1px solid purple; /* Black border around the health bar */
+    width: 150px; /* Set width for the health bar container */
+    height: 9px; /* Set height for the health bar container */
+}
+
+.health_border {
+    background-color: green; /* Black background for the health bar */
+    height: 100%; /* Set height for the health bar */
+}
+
+.health_bar {
+    height: 100%; /* Make the health bar fill the height of the container */
+    background-color: black; /* Green color for the health bar */
+}
+
+
+

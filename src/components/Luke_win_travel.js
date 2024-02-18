@@ -23,9 +23,6 @@ function Luke_travel() {
 
   return (
     <div className="luke_win_travel_container">
-      {/* <div className="luke_travel">
-        <img src={luke_travel} alt="luke_travel" id="luke_travel_gif" />
-      </div> */}
       <div className="audio_player_container">
         <AudioPlayer audioFile={audioFile} />
       </div>

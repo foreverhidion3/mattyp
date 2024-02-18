@@ -1,11 +1,7 @@
 .luke_win_travel_container {
-    /* background-image: url('../images/stars_twinkle.gif'); */
-     /* background-image: url('../images/stars_field.gif'); */
-     /* background-image: url('../images/stars_moving_east.gif'); */
-     /* background-image: url("../images/luke_travel_7.gif"); */
+    
      background-image: url("../images/the_black_hole_2.webp");
-     /* background-image: url("../images/the_black_hole_4.webp"); */
-     /* background-image: url("../images/luke_travel_4.webp"); */
+     
      background-size: cover;
      background-position: center;
      background-repeat: no-repeat;
