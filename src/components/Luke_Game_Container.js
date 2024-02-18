@@ -61,8 +61,8 @@ function Game_Container() {
         };
     }, []); // Empty dependency array ensures the effect runs only once after initial render
 
-    const handleJewelCollected = () => {
-        setJewelsCollected((prevCount) => prevCount + 1);
+    const handleJewelCollected = (value) => {
+        setJewelsCollected((prevCount) => prevCount + value);
     };
     
     const handleHitsCounted = () => {
@@ -88,17 +88,29 @@ function Game_Container() {
             setGameOver(true); // Set gameOver to true
             navigate('/luke_win_travel');
         }
-    }, [navigate]);
+    }, [jewelsCollected, navigate]);
 
-    // const getHitsCounterColor = (hitsCount) => {
-    //     if (hitsCount >= 800) {
-    //         return 'hits_red';
-    //     } else if (hitsCount >= 400) {
-    //         return 'hits_yellow';
-    //     } else {
-    //         return 'hits_green';
-    //     }
-    // };
+    // Black Hole Damage
+    useEffect(() => {
+        const handleBlackHoleDamage = () => {
+            const containerRect = containerRef.current.getBoundingClientRect();
+            const heroBottom = hero_position.y + 120; // Assuming the height of the hero image is 120px
+    
+            // Calculate the distance between the hero and the bottom of the container
+            const distanceToBottom = containerRect.bottom - heroBottom;
+            // console.log("Distance to bottom:", distanceToBottom);
+    
+            // Check if the hero is within a certain threshold to the bottom
+            if (distanceToBottom <= 100) {
+                // Apply damage to the player
+                sethitsCounted((prevCount) => Math.max(0, prevCount + .05)); // Reduce health by 50 points
+            }
+        };
+    
+        const intervalId = setInterval(handleBlackHoleDamage, 1); // Check every 100ms for proximity to bottom
+    
+        return () => clearInterval(intervalId);
+    }, [hero_position, hitsCounted]);
 
     return (
         <div className="body">
@@ -111,7 +123,7 @@ function Game_Container() {
                     </div>
                     <div className="game_container_2">
                         <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
-                        <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={hero_position} />
+                        <Jewel containerRef={containerRef} handleJewelCollected={handleJewelCollected} heroPosition={hero_position} />
                         <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
                         <Health_drop containerRef={containerRef} ship={ship} setShip={setShip} hero_position={hero_position} handleJewelCollected={handleJewelCollected} handleHealth={handleHealth}/>
                     </div>
@@ -131,92 +143,6 @@ function Game_Container() {
 }
 
 export default Game_Container;
-
-
-
-//works best
-
-// import React, { useEffect, useRef, useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import "./Game_Container.css"
-// import Hero from "./Hero.js"
-// import Jewel from "./Jewel.js"
-// import Villain from "./Villain.js"
-
-// function Game_Container() {
-//     const containerRef = useRef(null); // Define a containerRef
-//     const [jewelsCollected, setJewelsCollected] = useState(0);
-//     const [hitsCounted, sethitsCounted] = useState(0);
-//     const [hero_position, setHeroPosition] = useState({ x: 0, y: 0 }); // Define hero_position state
-//     const [villain_position, setVillainPosition] = useState({ x: 300, y: 20 }); // Define villain_position state
-//     const [jewel_position, setJewelPosition] = useState([]); // Define jewel_position state
-//     const [fireballPositions, setFireballPositions] = useState([]);
-//     const [collisionTimestamp, setCollisionTimestamp] = useState(0);
-//     const [hitCounter, setHitCounter] = useState(0); // Initialize hit counter
-//     const navigate = useNavigate();
-
-//     useEffect(() => {
-//         // Get a reference to the game container element
-//         const gameContainer = document.querySelector('.game_container_2');
-//         containerRef.current = gameContainer; // Assign the game container element to containerRef
-
-//         // Set the initial dimensions for larger screens
-//         gameContainer.style.width = '500px';
-//         gameContainer.style.height = '800px';
-
-//         // Check if the screen width is less than or equal to 600px
-//         const adjustDimensions = () => {
-//             const gameContainer = containerRef.current;
-//             if (gameContainer) {
-//                 if (window.matchMedia('(max-width: 600px)').matches) {
-//                     // Adjust dimensions for smaller screens
-//                     gameContainer.style.width = '375px';
-//                     gameContainer.style.height = '650px';
-//                 } else {
-//                     // Adjust dimensions for larger screens
-//                     gameContainer.style.width = '500px';
-//                     gameContainer.style.height = '800px';
-//                 }
-//             }
-//         };
-//         // Call adjustDimensions initially and add event listener for window resize
-//         adjustDimensions();
-//         window.addEventListener('resize', adjustDimensions);
-//         // Cleanup function to remove the event listener
-//         return () => {
-//             window.removeEventListener('resize', adjustDimensions);
-//         };
-//     }, []); // Empty dependency array ensures the effect runs only once after initial render
-
-//     const handleJewelCollected = () => {
-//         setJewelsCollected((prevCount) => prevCount + 1);
-//     };
-//     const handleHitsCounted = () => {
-//         sethitsCounted((prevCount) => prevCount + 5);
-//     };
-//     useEffect(() => {
-//         if (hitsCounted >= 1000) {
-//             navigate('/game_over'); // Navigate to the game over route
-//         }
-//     }, [hitsCounted, navigate]);
-
-//     return (
-//         <div className="Test">
-//             <p style={{ color: 'red' }}>Jewels Collected: {jewelsCollected}</p> 
-//             <p style={{ color: 'blue' }}>Hits: {hitsCounted}</p> {/* Display hit counter */}
-//             <div className="game_container_2">    
-//                 <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
-//                 <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={hero_position} />
-//                 <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
-//             </div>
-//         </div>
-//     );
-// }
-
-// export default Game_Container;
-
-
-
 
 
 

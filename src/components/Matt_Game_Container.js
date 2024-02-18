@@ -60,8 +60,8 @@ function Game_Container() {
         };
     }, []); // Empty dependency array ensures the effect runs only once after initial render
 
-    const handleJewelCollected = () => {
-        setJewelsCollected((prevCount) => prevCount + 1);
+    const handleJewelCollected = (value) => {
+        setJewelsCollected((prevCount) => prevCount + value);
     };
     const handleHitsCounted = () => {
         sethitsCounted((prevCount) => Math.max(0, prevCount + 2)); // Ensure hitsCounted never goes below 0
@@ -88,17 +88,30 @@ function Game_Container() {
             setGameOver(true); // Set gameOver to true
             navigate('/matt_win_travel');
         }
-    }, [navigate]);
+    }, [jewelsCollected, navigate]);
 
-    // const getHitsCounterColor = (hitsCount) => {
-    //     if (hitsCount >= 800) {
-    //         return 'hits_red';
-    //     } else if (hitsCount >= 400) {
-    //         return 'hits_yellow';
-    //     } else {
-    //         return 'hits_green';
-    //     }
-    // };
+
+   // Black Hole Damage
+   useEffect(() => {
+    const handleBlackHoleDamage = () => {
+        const containerRect = containerRef.current.getBoundingClientRect();
+        const heroBottom = hero_position.y + 50; // Assuming the height of the hero image is 120px
+
+        // Calculate the distance between the hero and the bottom of the container
+        const distanceToBottom = containerRect.bottom - heroBottom;
+        // console.log("Distance to bottom:", distanceToBottom);
+
+        // Check if the hero is within a certain threshold to the bottom
+        if (distanceToBottom <= 200) {
+            // Apply damage to the player
+            sethitsCounted((prevCount) => Math.max(0, prevCount + .05)); // Reduce health by 50 points
+        }
+    };
+
+    const intervalId = setInterval(handleBlackHoleDamage, 1); // Check every 100ms for proximity to bottom
+
+        return () => clearInterval(intervalId);
+    }, [hero_position, hitsCounted]);
 
     return (
         <div className="body">
@@ -112,7 +125,7 @@ function Game_Container() {
                     
                         <div className="game_container_2">    
                             <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
-                            <Jewel containerRef={containerRef} onJewelCollected={handleJewelCollected} heroPosition={hero_position} />
+                            <Jewel containerRef={containerRef} handleJewelCollected={handleJewelCollected} heroPosition={hero_position} />
                             <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
                             <Health_drop containerRef={containerRef} ship={ship} setShip={setShip} hero_position={hero_position} handleJewelCollected={handleJewelCollected} handleHealth={handleHealth}/>
                         </div>

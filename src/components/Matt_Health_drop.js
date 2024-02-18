@@ -149,7 +149,7 @@ const Health_drop = ({ containerRef, ship, setShip, hero_position, handleJewelCo
 
             if (isCollision) {
                 console.log("Collision detected with jewel at coordinates:", health);
-                handleJewelCollected();
+                // handleJewelCollected();
                 collectHeart(index);
                 handleHealth();
             }

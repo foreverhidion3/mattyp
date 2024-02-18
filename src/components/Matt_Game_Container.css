@@ -61,6 +61,39 @@ body::-webkit-scrollbar-track {
         height: 678px;
     }
 }
+/* .game_counters {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    margin-top: 2%;
+    justify-content: space-between;
+    margin-right: 5%;
+    margin-left: 5%;
+    color: green;
+    font-size: 24px;
+    font-weight: bold;
+}
+@media only screen and (max-width: 600px) {
+    .game_counters {
+        font-size: 12px;
+    }
+}
+.game_counters span {
+    color:purple;
+}
+.hits_counter {
+    font-size: 24px;
+    font-weight: bold;
+}
+.hits_green {
+    color: green;
+}
+.hits_yellow {
+    color: yellow;
+}
+.hits_red {
+    color: red;
+} */
 #villain_img {
     /* height: 8%;
     width: 8%; */
