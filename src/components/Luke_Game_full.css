@@ -43,8 +43,8 @@
 }
 .play_img_2_container {
    position: absolute;
-   bottom: 20px; /* Adjust this value to set the distance from the bottom */
-   right: 10px; /* Adjust this value to set the distance from the right */
+   bottom: 2%; /* Adjust this value to set the distance from the bottom */
+   right: 1%; /* Adjust this value to set the distance from the right */
    height: 100px;
    width: 100px;
    margin-top: 10%;

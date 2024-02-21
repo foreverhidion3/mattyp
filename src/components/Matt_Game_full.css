@@ -1,0 +1,96 @@
+.game_full_background {
+    background-image: url('../images/stars_twinkle.gif');
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+ }
+ .instructions_container {
+    height: 80%; /* Adjust height as needed */
+    width: 60%; /* Adjust width as needed */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center children vertically */
+    /* justify-content: center;  */
+    overflow-y: auto;
+ }
+ 
+ .instructions_container::-webkit-scrollbar {
+     width: .1px; /* Width of the scrollbar */
+     height: .1px;
+ }
+ 
+ .instructions_container::-webkit-scrollbar-track {
+     background: #f1f1f1; /* Color of the scrollbar track */
+ }
+ 
+ .instructions_container::-webkit-scrollbar-thumb {
+     background: #888; /* Color of the scrollbar handle */
+ }
+ 
+ .instructions_container::-webkit-scrollbar-thumb:hover {
+     background: #555; /* Color of the scrollbar handle on hover */
+ }
+ #background {
+    color: yellow;
+ }
+ #instructions {
+    color: yellow;
+ }
+ #hundred {
+    color: yellow
+ }
+ .play_img_2_container {
+    position: absolute;
+    bottom: 2%; /* Adjust this value to set the distance from the bottom */
+    right: 1%; /* Adjust this value to set the distance from the right */
+    height: 100px;
+    width: 100px;
+    margin-top: 10%;
+    margin-right: 5%;
+    
+  }
+  #play_img_2 {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    
+ 
+  }
+  #play_img_2:hover {
+    transform: scale(1.1); /* Adjust the scale factor for the desired growth */
+ }
+ 
+  .paul_imgs {
+    width: 700px; /* Ensure images don't exceed the width of their container */
+    height: 700px; /* Ensure images don't exceed the height of their container */
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    padding-top: 10px;
+    padding-bottom: 10px;
+ }
+ @media only screen and (max-width: 850px) {
+    .paul_imgs {
+ 
+        height: 350px;
+        width: 350px;
+    }
+ }
+ 
+ .paul_imgs:hover {
+    transform: scale(1.1); /* Adjust the scale factor for the desired growth */
+ }
+ 
+ .title_12_img {
+    margin-top: 15%;
+ 
+ }
+ @media only screen and (max-width: 850px) {
+    .title_12_img {
+ 
+        height: 50px;
+        width: 200px;
+    }
+ }
