@@ -60,7 +60,7 @@ function Matt_secret_lab() {
             <Link to="/story_mode" className="title_img_5_container">
                 <img src={title_img_5} alt="title_img_5" id="title_img_5" />
             </Link>
-            <Link to="/photos" className="title_img_6_container">
+            <Link to="/matt_photos" className="title_img_6_container">
                 <img src={title_img_6} alt="title_img_6" id="title_img_6" />
             </Link>
           </div>

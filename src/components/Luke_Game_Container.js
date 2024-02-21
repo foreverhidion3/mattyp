@@ -15,6 +15,7 @@ import audioFile from '../audio/Destroyer of worlds - Aaron Hibell José Vicente
 function Game_Container() {
     const containerRef = useRef(null); // Define a containerRef
     const [jewelsCollected, setJewelsCollected] = useState(0);
+    const [jewelsStolen, setJewelsStolen] = useState(0);
     const [hitsCounted, sethitsCounted] = useState(0);
     const [hero_position, setHeroPosition] = useState({ x: 0, y: 0 }); // Define hero_position state
     const [ship, setShip] = useState([]);
@@ -64,6 +65,10 @@ function Game_Container() {
     const handleJewelCollected = (value) => {
         setJewelsCollected((prevCount) => prevCount + value);
     };
+
+    const handleJewelStolen = (value) => {
+        setJewelsStolen((prevCount) => prevCount + value);
+    };
     
     const handleHitsCounted = () => {
         sethitsCounted((prevCount) => Math.max(0, prevCount + 0.5)); // Ensure hitsCounted never goes below 0
@@ -103,7 +108,7 @@ function Game_Container() {
             // Check if the hero is within a certain threshold to the bottom
             if (distanceToBottom <= 100) {
                 // Apply damage to the player
-                sethitsCounted((prevCount) => Math.max(0, prevCount + .05)); // Reduce health by 50 points
+                sethitsCounted((prevCount) => Math.max(0, prevCount + .1)); // Reduce health by 50 points
             }
         };
     
@@ -118,13 +123,14 @@ function Game_Container() {
                 <div className="game_background">
                     <div className='game_counters'>
                             <div>Fragments Collected: <span>{jewelsCollected}</span></div>
+                            {/* <div>Fragments Stolen: <span>{jewelsStolen}</span></div> */}
                             {/* <div className={getHitsCounterColor(hitsCounted)}>Hits Taken: <span>{hitsCounted}</span></div> */}
                             <Health_bar handleHitsCounted={handleHitsCounted} hitsCounted={hitsCounted} maxHealth={maxHealth} />
                     </div>
                     <div className="game_container_2">
                         <Hero setPosition={setHeroPosition} jewelPositions={[]} onJewelCollected={handleJewelCollected} heroPosition={hero_position} fireballPositions={fireballPositions} />
-                        <Jewel containerRef={containerRef} handleJewelCollected={handleJewelCollected} heroPosition={hero_position} />
-                        <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villainPosition={villain_position} setvillainPosition={setVillainPosition} /> 
+                        <Jewel containerRef={containerRef} handleJewelCollected={handleJewelCollected} handleJewelStolen={handleJewelStolen} heroPosition={hero_position} />
+                        <Villain heroPosition={hero_position} onHitsCounted={handleHitsCounted} villain_position={villain_position} setVillainPosition={setVillainPosition} /> 
                         <Health_drop containerRef={containerRef} ship={ship} setShip={setShip} hero_position={hero_position} handleJewelCollected={handleJewelCollected} handleHealth={handleHealth}/>
                     </div>
                     <div className="game_background_2">

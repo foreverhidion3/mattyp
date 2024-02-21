@@ -19,7 +19,8 @@ import Luke_winner_page from "./components/Luke_winner_page";
 import Luke_win_travel from "./components/Luke_win_travel";
 import Game_full from "./components/Game_full";
 import Story_mode from "./components/Story_mode";
-import Photos from "./components/Photos";
+import Matt_Photos from "./components/Matt_Photos";
+import Luke_Photos from "./components/Luke_Photos";
 
 function App() {
   return (
@@ -43,7 +44,8 @@ function App() {
           <Route path="/luke_winner_page" element={<Luke_winner_page />} />
           <Route path="/game_full" element={<Game_full />} />
           <Route path="/story_mode" element={<Story_mode />} />
-          <Route path="/photos" element={<Photos />} />
+          <Route path="/matt_photos" element={<Matt_Photos />} />
+          <Route path="/luke_photos" element={<Luke_Photos />} />
       </Routes>
     </BrowserRouter>
   );

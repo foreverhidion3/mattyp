@@ -5,7 +5,7 @@ import villain_img from "../images/mm_image_flying_2.png";
 import fireball_img from '../images/power_ball_12.gif';
 // import collision_img from '../images/explosion_2.webp';
 
-function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCounted}) {
+function Villain ({ heroPosition, villain_position, setVillainPosition, onHitsCounted}) {
    
 
     const navigate = useNavigate()
@@ -23,8 +23,8 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
     const [fireballsWidth, setfireballsWidth] = useState(20);
     const [fireballsHeight, setfireballsHeight] = useState(20);
 
-    const [xDirection, setXDirection] = useState(1);
-    const [yDirection, setYDirection] = useState(1);
+    let [xDirection, setXDirection] = useState(1);
+    let [yDirection, setYDirection] = useState(1);
     const [attack, setAttack] = useState(false);
     const [attackX, setAttackX] = useState(0);
     const [attackY, setAttackY] = useState(0);
@@ -47,11 +47,10 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
     // const [collisionCoordinates, setCollisionCoordinates] = useState(null);
     
     useEffect(() => {
-        setvillainPosition({ x: 400, y: 20 })
+        setVillainPosition({ x: 400, y: 200 })
     }, []);
 
-    
-    //animate villian
+    // Animate villain
     useEffect(() => {
         const animate = () => {
             if (containerRef.current) {
@@ -59,30 +58,69 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
                 const containerHeight = containerRef.current.clientHeight;
                 const villainWidth = villainRef.current.width;
                 const villainHeight = villainRef.current.height;
-                const speed = 0.7;  
-    
-                setX((prevX) => {
-                    const nextX = prevX + xDirection * speed;
-                    if (nextX >= containerWidth - villainWidth || nextX <= 0) {
-                        setXDirection((prevDirection) => prevDirection * -1);
-                    }
-                    return nextX;
-                });
-    
-                setY((prevY) => {
-                    const nextY = prevY + yDirection * speed;
-                    if (nextY >= containerHeight - villainHeight || nextY <= 0) {
-                        setYDirection((prevDirection) => prevDirection * -1);
-                    }
-                    return nextY;
-                });
+                const speed = 0.7;
+
+                // Calculate the next X and Y positions
+                let nextX = x + xDirection * speed;
+                let nextY = y + yDirection * speed;
+
+                // Reverse direction if hitting container's width boundaries
+                if (nextX >= containerWidth - villainWidth || nextX <= 0) {
+                    setXDirection((prevDirection) => prevDirection * -1);
+                    nextX = Math.max(0, Math.min(nextX, containerWidth - villainWidth));
+                }
+
+                // Reverse direction if hitting container's height boundaries
+                if (nextY >= containerHeight - villainHeight || nextY <= 0) {
+                    setYDirection((prevDirection) => prevDirection * -1);
+                    nextY = Math.max(0, Math.min(nextY, containerHeight - villainHeight));
+                }
+
+                // Update villain's position using setVillainPosition
+                setVillainPosition({ x: nextX, y: nextY });
+                // Update local state
+                setX(nextX);
+                setY(nextY);
             }
         };
-    
+
         animationFrameRef.current = requestAnimationFrame(animate);
-    
+
         return () => cancelAnimationFrame(animationFrameRef.current);
-    }, [x, y, xDirection, yDirection, containerRef.current]);
+    }, [x, y, xDirection, yDirection, containerRef.current, setVillainPosition]);
+
+    //animate villian without updating villianPostion state
+    // useEffect(() => {
+    //     const animate = () => {
+    //         if (containerRef.current) {
+    //             const containerWidth = containerRef.current.clientWidth;
+    //             const containerHeight = containerRef.current.clientHeight;
+    //             const villainWidth = villainRef.current.width;
+    //             const villainHeight = villainRef.current.height;
+    //             const speed = 0.7;  
+    
+    //             setX((prevX) => {
+    //                 const nextX = prevX + xDirection * speed;
+    //                 if (nextX >= containerWidth - villainWidth || nextX <= 0) {
+    //                     setXDirection((prevDirection) => prevDirection * -1);
+    //                 }
+    //                 return nextX;
+    //             });
+    
+    //             setY((prevY) => {
+    //                 const nextY = prevY + yDirection * speed;
+    //                 if (nextY >= containerHeight - villainHeight || nextY <= 0) {
+    //                     setYDirection((prevDirection) => prevDirection * -1);
+    //                 }
+    //                 return nextY;
+    //             });
+    //         }
+    //     };
+    
+    //     animationFrameRef.current = requestAnimationFrame(animate);
+    
+    //     return () => cancelAnimationFrame(animationFrameRef.current);
+    // }, [x, y, xDirection, yDirection, containerRef.current]);
     
 
     //add fireball

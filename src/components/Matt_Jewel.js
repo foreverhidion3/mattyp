@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import regularJewelImage from "../images/power_ball_2.gif";
-import valuableJewelImage from "../images/jewel_1.gif";
+import valuableJewelImage from "../images/battery_3.webp";
 
 const Jewel = ({ containerRef, handleJewelCollected, heroPosition }) => {
     const [jewels, setJewels] = useState([]);

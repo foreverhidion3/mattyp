@@ -43,7 +43,7 @@ function Luke_secret_lab() {
             <Link to="/story_mode" className="title_img_8_container">
                 <img src={title_img_8} alt="title_img_8" id="title_img_8" />
             </Link>
-            <Link to="/photos" className="title_img_9_container">
+            <Link to="/luke_photos" className="title_img_9_container">
                 <img src={title_img_9} alt="title_img_9" id="title_img_9" />
             </Link>
           </div>

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import regularJewelImage from "../images/power_ball_2.gif";
-import valuableJewelImage from "../images/jewel_1.gif"; 
+import valuableJewelImage from "../images/battery_3.webp"; 
 
-const Jewel = ({ containerRef, handleJewelCollected, heroPosition }) => {
+const Jewel = ({ containerRef, handleJewelCollected, heroPosition, villain_position, handleJewelStolen }) => {
     const [jewels, setJewels] = useState([]);
     const [jewelWidth, setJewelWidth] = useState(20);
     const [jewelHeight, setJewelHeight] = useState(20);
@@ -44,7 +44,7 @@ const Jewel = ({ containerRef, handleJewelCollected, heroPosition }) => {
                 heroPosition.y + 100 > jewel.y;
 
             if (isCollision) {
-                console.log("Collision detected with jewel at coordinates:", jewel);
+                // console.log("Collision detected with jewel at coordinates:", jewel);
                 // handleJewelCollected();
                 collectJewel(index);
             }
@@ -65,11 +65,55 @@ const Jewel = ({ containerRef, handleJewelCollected, heroPosition }) => {
                 jewelValue = 1; // Otherwise, assign a value of 1
             }
     
-            console.log("Is near bottom:", isNearBottom);
-            console.log("Jewel value:", jewelValue);
+            // console.log("Is near bottom:", isNearBottom);
+            // console.log("Jewel value:", jewelValue);
     
             // Update the total value of collected jewels
             handleJewelCollected(jewelValue);
+    
+            // Remove the collected jewel from the jewels array
+            return prevJewels.filter((_, i) => i !== index);
+        });
+    };
+
+    
+    const checkVillainCollisions = () => {
+        jewels.forEach((jewel, index) => {
+            if (villain_position && villain_position.x !== undefined && villain_position.y !== undefined) {
+                const isCollision =
+                    villain_position.x < jewel.x + jewelWidth &&
+                    villain_position.x + 100 > jewel.x &&
+                    villain_position.y < jewel.y + jewelHeight &&
+                    villain_position.y + 100 > jewel.y;
+    
+                if (isCollision) {
+                    console.log("Villain stole jewel at coordinates:", jewel);
+                    // handleJewelCollected();
+                    stealJewel(index);
+                }
+            }
+        });
+    };
+
+    const stealJewel = (index) => {
+        setJewels((prevJewels) => {
+            const stealJewel = prevJewels[index];
+            const isNearBottom = stealJewel.y > (containerRef.current.clientHeight - 200); // Adjust 200 to your preferred distance
+    
+            let jewelValue; // Define the jewelValue variable
+    
+            // Determine the value of the collected jewel based on its position
+            if (isNearBottom) {
+                jewelValue = 2; // If near the bottom, assign a value of 20
+            } else {
+                jewelValue = 1; // Otherwise, assign a value of 1
+            }
+    
+            // console.log("Is near bottom:", isNearBottom);
+            // console.log("Jewel value:", jewelValue);
+    
+            // Update the total value of collected jewels
+            handleJewelStolen(jewelValue);
     
             // Remove the collected jewel from the jewels array
             return prevJewels.filter((_, i) => i !== index);
@@ -113,6 +157,11 @@ const Jewel = ({ containerRef, handleJewelCollected, heroPosition }) => {
     useEffect(() => {
         checkCollisions();
     }, [jewels, heroPosition]);
+
+    useEffect(() => {
+        checkVillainCollisions();
+        console.log('Villain position:', villain_position);
+    }, [jewels, villain_position]);
 
     return (
         <>
