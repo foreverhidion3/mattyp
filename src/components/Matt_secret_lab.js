@@ -57,9 +57,9 @@ function Matt_secret_lab() {
             <Link to="/matt_game_full" className="title_img_4_container">
                 <img src={title_img_4} alt="title_img_4" id="title_img_4" /> 
             </Link>
-            <Link to="/story_mode" className="title_img_5_container">
+            {/* <Link to="/story_mode" className="title_img_5_container">
                 <img src={title_img_5} alt="title_img_5" id="title_img_5" />
-            </Link>
+            </Link> */}
             <Link to="/matt_photos" className="title_img_6_container">
                 <img src={title_img_6} alt="title_img_6" id="title_img_6" />
             </Link>

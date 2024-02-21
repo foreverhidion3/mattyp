@@ -40,9 +40,9 @@ function Luke_secret_lab() {
             <Link to="/luke_game_full" className="title_img_7_container">
                 <img src={title_img_7} alt="title_img_7" id="title_img_7" /> 
             </Link>
-            <Link to="/story_mode" className="title_img_8_container">
+            {/* <Link to="/story_mode" className="title_img_8_container">
                 <img src={title_img_8} alt="title_img_8" id="title_img_8" />
-            </Link>
+            </Link> */}
             <Link to="/luke_photos" className="title_img_9_container">
                 <img src={title_img_9} alt="title_img_9" id="title_img_9" />
             </Link>
