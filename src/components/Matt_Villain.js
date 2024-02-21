@@ -64,7 +64,7 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
                 const containerHeight = containerRef.current.clientHeight;
                 const villainWidth = villainRef.current.width;
                 const villainHeight = villainRef.current.height;
-                const speed = 0.3;  
+                const speed = 0.5;  
     
                 setX((prevX) => {
                     const nextX = prevX + xDirection * speed;
@@ -121,7 +121,7 @@ function Villain ({ heroPosition, villainPosition, setvillainPosition, onHitsCou
           const containerHeight = containerRef.current.clientHeight;
           const fireballWidth = fireballRef.current.width;
           const fireballHeight = fireballRef.current.height;
-          const fireballSpeed = .4;
+          const fireballSpeed = .7;
         setFireballs((prevFireball) =>
             prevFireball.map((fireballs) => ({
               ...fireballs,

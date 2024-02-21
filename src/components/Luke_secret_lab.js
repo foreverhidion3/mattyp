@@ -37,7 +37,7 @@ function Luke_secret_lab() {
       <div className="lab_background">
         <div className="lab_links">
           <div className="menu">
-            <Link to="/luke_war" className="title_img_7_container">
+            <Link to="/luke_game_full" className="title_img_7_container">
                 <img src={title_img_7} alt="title_img_7" id="title_img_7" /> 
             </Link>
             <Link to="/story_mode" className="title_img_8_container">

@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import "./Matt_Game_Container.css"
+import back_2 from "../images/back_2.png"
 import Health_bar from "./Health_bar.js"
 import Hero from "./Matt_Hero.js"
 import Jewel from "./Matt_Jewel.js"
@@ -115,6 +117,9 @@ function Game_Container() {
 
     return (
         <div className="body">
+            <Link to="/matt_secret_lab" className="back_container">
+                <img src={back_2} alt="title_img_9" id="title_img_9" />
+            </Link>
             <div className="game_body">
                 <div className="game_background">
                     <div className='game_counters'>

@@ -15,7 +15,7 @@ function Matt_Photos() {
   return (
     <div className="photos_background">
         <div className="matt_photo_container">
-        <Link to="/" className="back_container">
+        <Link to="/matt_secret_lab" className="back_container">
                 <img src={back_2} alt="title_img_9" id="title_img_9" />
         </Link>
           <img src={Title_12} alt="title_12_img" className="title_12_img" />

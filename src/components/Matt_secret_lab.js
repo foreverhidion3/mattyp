@@ -54,7 +54,7 @@ function Matt_secret_lab() {
       <div className="space_station_background">
         <div className="space_station_links">
           <div className="menu_2">
-            <Link to="/mattyp_war" className="title_img_4_container">
+            <Link to="/matt_game_full" className="title_img_4_container">
                 <img src={title_img_4} alt="title_img_4" id="title_img_4" /> 
             </Link>
             <Link to="/story_mode" className="title_img_5_container">

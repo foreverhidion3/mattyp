@@ -14,7 +14,7 @@ import sis_5 from "../family_pictures/sis_5.jpg";
 function Luke_Photos() {
   return (
     <div className="photos_background">
-      <Link to="/" className="back_container">
+      <Link to="/luke_secret_lab"  className="back_container">
                 <img src={back} alt="title_img_9" id="title_img_9" />
       </Link>
         <div className="matt_photo_container">

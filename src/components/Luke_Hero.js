@@ -3,7 +3,7 @@ import hero_img from "../images/spaceship_img.png";
 
 const Hero = ({ setPosition, heroPosition, jewelPositions, fireballPositions, onJewelCollected }) => {
     const [driftDirection, setDriftDirection] = useState({ x: 1, y: 1 });
-    const [speed, setSpeed] = useState(.6);
+    const [speed, setSpeed] = useState(.8);
 
     const containerRef = useRef(null);
     const animationFrameRef = useRef(null);

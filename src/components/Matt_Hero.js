@@ -3,7 +3,7 @@ import hero_img from "../images/mm_image_flying_2.png";
 
 const Hero = ({ setPosition, heroPosition, jewelPositions, fireballPositions, onJewelCollected }) => {
     const [driftDirection, setDriftDirection] = useState({ x: 1, y: 1 });
-    const [speed, setSpeed] = useState(.7);
+    const [speed, setSpeed] = useState(1);
 
     const containerRef = useRef(null);
     const animationFrameRef = useRef(null);
