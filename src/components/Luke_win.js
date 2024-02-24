@@ -69,11 +69,11 @@ function Luke_win() {
                 </Link>
             </div>
             <div className="fire_container">
-              <img src={fire} alt="fire_img_1" className="fire_img_1" />
+              {/* <img src={fire} alt="fire_img_1" className="fire_img_1" /> */}
               <img src={fire} alt="fire_img_2" className="fire_img_2" />
               <img src={fire} alt="fire_img_3" className="fire_img_3" />
               <img src={fire} alt="fire_img_4" className="fire_img_4" />
-              <img src={fire} alt="fire_img_5" className="fire_img_5" />
+              {/* <img src={fire} alt="fire_img_5" className="fire_img_5" /> */}
             </div>
             {/* <div className="smoke_container">
               <img src={smoke} alt="smoke_img_1" className="fire_img_1" />
@@ -87,35 +87,35 @@ function Luke_win() {
               <img src={fire} alt="fire_img_2" className="fire_img_2" />
               <img src={fire} alt="fire_img_3" className="fire_img_3" />
               <img src={fire} alt="fire_img_4" className="fire_img_4" />
-              <img src={fire} alt="fire_img_5" className="fire_img_5" />
+              {/* <img src={fire} alt="fire_img_5" className="fire_img_5" /> */}
             </div>
             <div className="fire_container_3">
               <img src={fire} alt="fire_img_1" className="fire_img_1" />
               <img src={fire} alt="fire_img_2" className="fire_img_2" />
               <img src={fire} alt="fire_img_3" className="fire_img_3" />
               <img src={fire} alt="fire_img_4" className="fire_img_4" />
-              <img src={fire} alt="fire_img_5" className="fire_img_5" />
+              {/* <img src={fire} alt="fire_img_5" className="fire_img_5" /> */}
             </div>
             <div className="fire_container_4">
               <img src={fire} alt="fire_img_1" className="fire_img_1" />
               <img src={fire} alt="fire_img_2" className="fire_img_2" />
               <img src={fire} alt="fire_img_3" className="fire_img_3" />
               <img src={fire} alt="fire_img_4" className="fire_img_4" />
-              <img src={fire} alt="fire_img_5" className="fire_img_5" />
+              {/* <img src={fire} alt="fire_img_5" className="fire_img_5" /> */}
             </div>
             <div className="fire_container_5">
               <img src={fire} alt="fire_img_1" className="fire_img_1" />
               <img src={fire} alt="fire_img_2" className="fire_img_2" />
               <img src={fire} alt="fire_img_3" className="fire_img_3" />
               <img src={fire} alt="fire_img_4" className="fire_img_4" />
-              <img src={fire} alt="fire_img_5" className="fire_img_5" />
+              {/* <img src={fire} alt="fire_img_5" className="fire_img_5" /> */}
             </div>
             <div className="fire_container_6">
               <img src={fire} alt="fire_img_1" className="fire_img_1" />
               <img src={fire} alt="fire_img_2" className="fire_img_2" />
               <img src={fire} alt="fire_img_3" className="fire_img_3" />
-              <img src={fire} alt="fire_img_4" className="fire_img_4" />
-              <img src={fire} alt="fire_img_5" className="fire_img_5" />
+              {/* <img src={fire} alt="fire_img_4" className="fire_img_4" /> */}
+              {/* <img src={fire} alt="fire_img_5" className="fire_img_5" /> */}
             </div>
         </div>
         <div className="audio_player_container">

@@ -81,7 +81,7 @@
 @media only screen and (max-width: 600px) {
     .lab_links_2 {
         height: 45%;
-        margin-bottom: -130%;
+        margin-bottom: -105%;
         /* margin-top: 110%;  */
     }
 }
@@ -358,6 +358,8 @@
     width: 100%;
     /* background-color: red; */
     margin-bottom: 10%;
+    margin-right: 0%;
+    margin-left: 20%;
 }
 .fire_img_1 {
     width: 20%;
@@ -387,6 +389,8 @@
     /* height: 10%; */
     /* background-color: blue; */
     margin-bottom: 15%;
+    margin-right: 25%;
+    margin-left: 10%;
 }
 .fire_container_3 {
     position: absolute;
@@ -396,6 +400,7 @@
     width: 100%;
     /* background-color: red; */
     margin-bottom: 20%;
+    margin-left: 10%;
 }
 .fire_container_4 {
     position: absolute;
@@ -405,6 +410,7 @@
     width: 100%;
     /* background-color: red; */
     margin-bottom: 25%;
+    margin-left: 10%;
 }
 .fire_container_5 {
     position: absolute;
@@ -414,6 +420,7 @@
     width: 100%;
     /* background-color: red; */
     margin-bottom: 30%;
+    margin-left: 10%;
 }
 .fire_container_6 {
     position: absolute;
@@ -423,6 +430,7 @@
     width: 100%;
     /* background-color: red; */
     margin-bottom: 35%;
+    margin-left: 20%;
 }
 .smoke_container {
     position: absolute;
