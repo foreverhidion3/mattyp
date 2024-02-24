@@ -11,7 +11,7 @@
      flex-direction: column;
      align-items: center; /* Vertical centering */
      justify-content: center; /* Horizontal centering */ 
-     overflow: auto;  
+     /* overflow: auto;   */
 }
 /* @media only screen and (max-width: 550px) {
     .luke_game_over_background {
@@ -28,6 +28,7 @@
     width: 100%;
 }
 .luke_win_center_piece {
+    position: absolute;
     /* background-color: blue; */
     height: 25%;
     width: 80%;
@@ -35,7 +36,7 @@
     flex-direction: column;
     align-items: center; /* Vertical centering */
     justify-content: center; /* Horizontal centering */ 
-    overflow: auto; 
+    /* overflow: auto;  */
     z-index: 10;
 }
 h2 {

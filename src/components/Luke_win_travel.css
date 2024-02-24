@@ -1,6 +1,6 @@
 .luke_win_travel_container {
     
-     background-image: url("../images/the_black_hole_2.webp");
+     background-image: url("../images/red_1.webp");
      
      background-size: cover;
      background-position: center;
@@ -9,8 +9,28 @@
      width: 100%;
      display: flex;
      flex-direction: column;
-     align-items: center; /* Vertical centering */
-     justify-content: center; /* Horizontal centering */ 
-     overflow: auto; 
- 
- }
+     align-items: center; 
+     justify-content: center; 
+     /* overflow: auto;  */
+}     
+.nightmare_4 {
+    background-image: url("../images/red_3.webp");
+    /* background-repeat: no-repeat; */
+    background-color: blue;
+    height:80%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+}
+.luke_nightmare {
+    height:800px;
+    width: 800px;
+}
+@media only screen and (max-width: 600px) {
+    .luke_nightmare {
+        height: 400px;
+        width: 400px;
+    }
+}
