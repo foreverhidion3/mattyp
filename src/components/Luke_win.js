@@ -39,13 +39,13 @@ function Luke_win() {
     <div className="full_win">
       <div className="win_background">
         <div className="fire_backgroud">
-        <div className= "luke_win_center_piece">
-        <h2>CONGRATULATIONS!</h2>
-        <p>You Win!</p>
-        <Link to="/luke_secret_lab" className="title_img_10_container">
-            <img src={title_img_10 } alt="title_img_10" id="title_img_10" />
-        </Link>
-      </div>
+            <div className= "luke_win_center_piece">
+              <h2>CONGRATULATIONS!</h2>
+              <p>You Win!</p>
+              <Link to="/luke_secret_lab" className="title_img_10_container">
+                  <img src={title_img_10 } alt="title_img_10" id="title_img_10" />
+              </Link>
+            </div>
             <div className="spaceship_img_container" >
                     <img src={ship} alt="ship_img" className="ship_img" />
             </div>
