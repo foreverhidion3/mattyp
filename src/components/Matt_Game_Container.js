@@ -69,7 +69,7 @@ function Game_Container() {
         sethitsCounted((prevCount) => Math.max(0, prevCount + 2)); // Ensure hitsCounted never goes below 0
     };
     const handleHealth = () => {
-        sethitsCounted((prevCount) => Math.max(0, prevCount - 100)); // Ensure health points never go below 0
+        sethitsCounted((prevCount) => Math.max(0, prevCount - 200)); // Ensure health points never go below 0
     };
     useEffect(() => {
         if (jewelsCollected < 100 && hitsCounted >= 1000) {
@@ -106,7 +106,7 @@ function Game_Container() {
         // Check if the hero is within a certain threshold to the bottom
         if (distanceToBottom <= 200) {
             // Apply damage to the player
-            sethitsCounted((prevCount) => Math.max(0, prevCount + .3)); // Reduce health by 50 points
+            sethitsCounted((prevCount) => Math.max(0, prevCount + .1)); // Reduce health by 50 points
         }
     };
 
